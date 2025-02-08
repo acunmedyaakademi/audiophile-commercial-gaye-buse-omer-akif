@@ -1,0 +1,101 @@
+/* 1. Use a more-intuitive box-sizing model */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* 2. Remove default margin */
+* {
+  margin: 0;
+}
+
+body {
+  /* 3. Add accessible line-height */
+  line-height: 1.5;
+  /* 4. Improve text rendering */
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 5. Improve media defaults */
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* 6. Inherit fonts for form controls */
+input, button, textarea, select {
+  font: inherit;
+}
+
+/* 7. Avoid text overflows */
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+/* 8. Improve line wrapping */
+p {
+  text-wrap: pretty;
+}
+h1, h2, h3, h4, h5, h6 {
+  text-wrap: balance;
+}
+
+/*
+  9. Create a root stacking context
+*/
+#root, #__next {
+  isolation: isolate;
+}
+
+
+.navbar {
+  display: flex;
+  justify-content: space-around;
+  background-color: #f2f7fc;
+  padding: 10px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+}
+
+.nav-item {
+  background-color: #e1e8ef;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+  border-radius: 8px;
+  width: 70px;
+  text-align: center;
+  transition: 0.3s ease-in-out, color 0.4s ease-in-out;
+}
+
+.nav-item .icon {
+  font-size: 20px;
+}
+
+.nav-item .text {
+  font-size: 14px;
+  margin-top: 4px;
+  color: #555;
+}
+
+/* Aktif buton (Seçili Olan) */
+.nav-item.active {
+  background: linear-gradient(100deg, #ff7a18, #ff3d00);
+  color: white;
+  transition: 0.3s ease-in-out, color 0.4s ease-in-out;
+}
+
+.nav-item.active .text {
+  color: white;
+}
+
+.content {
+  margin-top: 20px;
+  padding: 15px;
+  font-size: 16px;
+  line-height: 1.6;
+  max-width: 600px;
+}
