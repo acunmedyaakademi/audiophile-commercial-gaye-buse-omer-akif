@@ -1,6 +1,5 @@
 const routes = {
-  "": "assets/pages/home.html",
-  "#home": "index.html",
+  "#home": "assets/pages/home.html",
   "#headphones": "assets/pages/headphones.html",
   "#speakers": "assets/pages/speakers.html",
   "#earphones": "assets/pages/earphones.html",
@@ -8,10 +7,10 @@ const routes = {
 };
 
 function router() {
-  const app = document.getElementById("page");
+  const pageContainer = document.getElementById("page");
 
-  if (!app) {
-    console.error("HATA: #app öğesi bulunamadı!");
+  if (!pageContainer) {
+    console.error("HATA: #page elementi bulunamadı!");
     return;
   }
 
@@ -24,7 +23,7 @@ function router() {
       return response.text();
     })
     .then(html => {
-      app.innerHTML = html;
+      pageContainer.innerHTML = html;
     })
     .catch(err => console.error(err.message));
 }
