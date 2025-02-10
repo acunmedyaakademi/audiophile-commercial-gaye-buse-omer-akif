@@ -1,0 +1,85 @@
+@import "reset.css";
+
+body {
+  font-family: Manrope;
+}
+
+a {
+  text-decoration: none;
+}
+
+.product-detail {
+  padding-inline : 24px;
+}
+
+.go-back-link {
+  display: block;
+  margin-top : 16px;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 25px;
+  letter-spacing: 0px;
+  color : #000000;
+  margin-bottom: 24px;
+}
+
+.product-img {
+  margin-top: 24px;
+  margin-bottom: 40px;
+}
+
+.product-detail-text h4 {
+  margin-top: 32px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 19.12px;
+  letter-spacing: 10px;
+  color: #D87D4A;
+  margin-bottom: 40px;
+}
+
+.product-detail-name {
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 38.25px;
+  letter-spacing: 1px;
+  margin-bottom: 24px;
+  color : #000000;
+}
+
+.product-detail-info {
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 25px;
+  letter-spacing: 0px;
+  margin-block: 24px;
+  color : #000000;
+}
+
+.product-detail-price {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 24.59px;
+  letter-spacing: 1.29px;
+  color : #000000;
+  margin-bottom: 31px;
+}
+
+.product-count-area {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 88px;
+}
+
+.add-to-cart {
+  width: 160;
+  font-weight: 700;
+  font-size: 13px;
+  line-height: 17.76px;
+  letter-spacing: 1px;
+  text-align: center;
+  color : white;
+  background-color: #d87d4a;
+  padding-block: 15px;
+  padding-inline : 30.5px;
+}
