@@ -6,6 +6,7 @@ const routes = {
   "#checkout": "assets/pages/checkout.html"
 };
 
+
 function router() {
   const pageContainer = document.getElementById("page");
 
