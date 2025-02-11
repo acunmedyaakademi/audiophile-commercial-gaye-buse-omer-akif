@@ -20,7 +20,6 @@
 }
 
 .product-headphones-text {
-
   display: grid;
   grid-template-columns: 1fr;
   gap: 24px;
@@ -32,7 +31,7 @@
     font-size: 14px;
     line-height: 19.12px;
     letter-spacing: 10px;
-    color: #D87D4A;
+    color: #d87d4a;
   }
 
   h3 {
@@ -58,50 +57,56 @@
     font-size: 13px;
     line-height: 17.76px;
     letter-spacing: 1px;
-    color: #FFFFFF;
-    background-color: #D87D4A;
+    color: #ffffff;
+    background-color: #d87d4a;
     padding: 15px 30px;
     text-decoration: none;
   }
 }
 
 .categories {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr;
   gap: 68px;
-  margin-top: 80px;
-}
+  margin-top: 96px;
+  max-width: 327px;
+  margin-inline: auto;
 
-.category-item {
-  display: block;
-  background-color: #F1F1F1;
-  border-radius: 8px;
-  position: relative;
-  text-align: center;
-  min-height: 165px;
+  .category-item {
+    background-color: #f1f1f1;
+    border-radius: 8px;
+    position: relative;
+    text-align: center;
+    min-height: 165px;
 
-  h3 {
-    font-weight: 700;
-    font-size: 15px;
-    line-height: 20.49px;
-    letter-spacing: 1.07px;
-    color: #000000;
-    margin-top: 88px;
-    margin-bottom: 17px;
+    h3 {
+      font-weight: 700;
+      font-size: 15px;
+      line-height: 20.49px;
+      letter-spacing: 1.07px;
+      color: #000000;
+      margin-top: 88px;
+      margin-bottom: 17px;
+    }
+
+    img {
+      position: absolute;
+      transform: translate(-50%, -50%);
+      left: 50%;
+    }
+
+    a {
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 13px;
+      line-height: 17.76px;
+      letter-spacing: 1px;
+      color: #7d7d7d;
+    }
   }
 
-  img {
-    position: absolute;
-    top: -38px;
-  }
-
-  a {
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 13px;
-    line-height: 17.76px;
-    letter-spacing: 1px;
-    color: #7d7d7d;
+  .category-item:nth-child(1) {
+    margin-top: 32px;
   }
 }
 
@@ -127,7 +132,7 @@
   }
 
   span {
-    color: #D87D4A;
+    color: #d87d4a;
   }
 
   p {
@@ -153,11 +158,10 @@
 /* Tablet Start */
 
 @media (width >= 768px) {
-
   .mobile-headphone {
     display: none;
   }
-  
+
   .tablet-headphone {
     display: block;
   }
@@ -166,15 +170,14 @@
 /* Desktop Start */
 
 @media (width >= 1280px) {
-
   .mobile-headphone {
     display: none;
   }
-  
+
   .tablet-headphone {
     display: none;
   }
-  
+
   .desktop-headphone {
     display: block;
   }
