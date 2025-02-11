@@ -8,7 +8,7 @@ a {
   text-decoration: none;
 }
 
-.product-detail {
+.container-product-detail {
   padding-inline : 24px;
 }
 
@@ -71,7 +71,32 @@ a {
   margin-bottom: 88px;
 }
 
-.add-to-cart {
+.product-counter {
+  display: flex;
+  gap: 20px;
+  background-color: #f1f1f1;
+  padding: 15px;
+  align-items: center;
+  justify-content: center;
+  width: 120px;
+}
+
+.minus-counter, .plus-counter {
+  font-weight: 700;
+  font-size: 13px;
+  line-height: 17.76px;
+  letter-spacing: 1px;
+}
+
+.product-counter .count {
+  font-weight: 700;
+  font-size: 13px;
+  line-height: 17.76px;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+.add-to-cart, .see-product-button {
   width: 160;
   font-weight: 700;
   font-size: 13px;
@@ -82,4 +107,101 @@ a {
   background-color: #d87d4a;
   padding-block: 15px;
   padding-inline : 30.5px;
+}
+
+.product-features {
+  margin-bottom: 88px;
+}
+
+.features-header {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 36px;
+  letter-spacing: 0.86px;
+  margin-bottom: 24px;
+}
+
+.features-text {
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 25px;
+  letter-spacing: 0px;
+  margin-bottom: 88px;
+}
+
+.context-header {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 36px;
+  letter-spacing: 0.86px;
+  margin-bottom: 24px;
+}
+
+.product-features span {
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 25px;
+  letter-spacing: 0px;
+  color : #D87D4A;
+  margin-right: 24px;
+}
+
+.product-detail-images {
+  display: grid;
+  grid-template-rows: repeat(3,1fr);
+}
+
+.product-also-like {
+  margin-bottom: 120px;
+}
+
+.product-also-like h2 {
+  margin-top: 120px;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 36px;
+  letter-spacing: 0.86px;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.product-also-like-item{
+  display: flex;  
+  flex-direction: column;
+  gap: 32px;
+  text-align: center;
+}
+
+.see-product-button {
+  max-width: 160px;
+  margin-inline : auto;
+}
+
+.categories {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  text-align: center;
+}
+
+.category-item {
+  display: flex;
+  flex-direction: column;
+  background-color: #f1f1f1;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 22px;
+}
+
+.category-item-image {
+  margin-bottom: 36px;
+}
+
+.category-item h3 {
+  margin-bottom: 17px;
+}
+
+.shop-link {
+  display: flex;
+  gap: 13px;
 }

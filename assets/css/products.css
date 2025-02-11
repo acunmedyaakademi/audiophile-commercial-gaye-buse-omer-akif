@@ -71,12 +71,13 @@
 }
 
 .categories {
-  display: grid;
-  grid-template-columns: 1fr;
+  display: flex;
+  flex-direction: column;
   gap: 68px;
 }
 
 .category-item {
+  display: block;
   background-color: #F1F1F1;
   border-radius: 8px;
   position: relative;
@@ -95,11 +96,8 @@
   }
 
   img {
-    width: 79.92px;
-    height: 104px;
     position: absolute;
     top: -38px;
-    right: 120px;
   }
 
   a {
