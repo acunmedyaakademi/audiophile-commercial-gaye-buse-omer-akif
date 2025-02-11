@@ -55,3 +55,22 @@ async function router() {
 
 window.addEventListener("hashchange", router);
 window.addEventListener("load", router);
+
+function updatePageTitle() {
+  const pageTitle = document.querySelector(".page-title");
+
+  if (!pageTitle) return;
+
+  const hash = window.location.hash.replace("#", ""); 
+  if (hash && hash !== "home") {
+    const formattedTitle = hash.toUpperCase();
+    pageTitle.innerHTML = `<h1>${formattedTitle}</h1>`;
+    pageTitle.style.display = "block"; 
+  } else {
+    pageTitle.style.display = "none";
+  }
+}
+
+window.addEventListener("hashchange", updatePageTitle);
+window.addEventListener("load", updatePageTitle);
+

@@ -69,6 +69,7 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: 68px;
+  margin-top: 80px;
 }
 
 .category-item {

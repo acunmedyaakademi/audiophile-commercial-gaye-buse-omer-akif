@@ -2,7 +2,7 @@
  padding: 16px;
 }
 
-.categories {
+/* .categories {
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -11,7 +11,7 @@
 
 .category-item {
   background-color: rgba(241, 241, 241, 1);
-}
+} */
 
 .product-zx9 {
   background-color: rgba(216, 125, 74, 1);
