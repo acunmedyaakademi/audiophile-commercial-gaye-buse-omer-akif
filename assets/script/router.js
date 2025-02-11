@@ -29,8 +29,8 @@ async function router() {
     return;
   }
 
-  const hash = window.location.hash || "#home"; 
-  const page = routes[hash] || "assets/pages/404.html"; 
+  const hash = window.location.hash || "#home";
+  const page = routes[hash] || "assets/pages/404.html";
 
   // Eğer ürün kategorisi sayfasındaysak, JSON'dan veri çek ve render et
   if (hash === "#headphones" || hash === "#speakers" || hash === "#earphones") {
