@@ -74,6 +74,7 @@
   display: flex;
   flex-direction: column;
   gap: 68px;
+  margin-top: 80px;
 }
 
 .category-item {
