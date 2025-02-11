@@ -6,8 +6,18 @@ const routes = {
   "#checkout": "assets/pages/checkout.html"
 };
 
+async function fetchProducts() {
+  try {
+    const response = await fetch("data.json");
+    if (!response.ok) throw new Error("JSON verisi alınamadı!");
+    return await response.json();
+  } catch (error) {
+    console.error("Fetch hatası:", error);
+    return [];
+  }
+}
 
-function router() {
+async function router() {
   const pageContainer = document.getElementById("page");
 
   if (!pageContainer) {
@@ -16,6 +26,20 @@ function router() {
   }
 
   const hash = window.location.hash || "#home"; 
+
+  if (hash.startsWith("#product-")) {
+    fetch("assets/pages/product-detail.html")
+      .then(response => {
+        if (!response.ok) throw new Error("Sayfa yüklenemedi: " + response.status);
+        return response.text();
+      })
+      .then(html => {
+        pageContainer.innerHTML = html;
+      })
+      .catch(err => console.error(err.message));
+    return;
+  }
+
   const page = routes[hash] || "assets/pages/404.html"; 
 
   fetch(page)

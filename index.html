@@ -3,14 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Akiffdeneme</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/products.css">
   <link rel="stylesheet" href="assets/css/reset.css">
-  <script src="assets/script/router.js" defer></script>
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
   <div class="container" >
     <div class="header">
-      <a href="/"><img src="" alt="Company Logo"></a>
+      <a href="#home"><img src="./assets/shared/desktop/logo.svg" alt="Company Logo"></a>
       <div class="navbar">
         <ul>
           <li><a href="#home">Home</a></li>
@@ -19,13 +22,20 @@
           <li><a href="#earphones">Earphones</a></li>
         </ul>
       </div>
-      <img src="" alt="Basket Icon">
+      <img src="./assets/shared/desktop/icon-cart.svg" alt="Basket Icon">
     </div>
       <div id="page">
         
       </div>
+      <div class="main-content">
+        <img src="./assets/shared/mobile/image-best-gear.jpg" alt="">
+        <div class="content-text">
+          <h3>Bringing you the <span>best</span> audio gear</h3>
+          <p>Located at the heart of New York City, Audiophile is the premier store for high end headphones, earphones, speakers, and audio accessories. We have a large showroom and luxury demonstration rooms available for you to browse and experience a wide range of our products. Stop by our store to meet some of the fantastic people who make Audiophile the best place to buy your portable audio equipment.</p>
+        </div>
+      </div>
       <div class="footer">
-        <a href="/"><img src="" alt="Company Logo"></a>
+        <a href="/"><img src="assets/checkout/audiophile.svg" alt="Company Logo"></a>
         <div class="navbar">
           <ul>
             <li>Home</li>
@@ -34,14 +44,17 @@
             <li>Earphones</li>
           </ul>
         </div>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse, quam.</p>
+        <p>Audiophile is an all in one stop to fulfill your audio needs. We're a small team of music lovers and sound specialists who are devoted to helping you get the most out of personal audio. Visit our demo facility - we’re open 7 days a week.</p>
+        <p>Copyright 2025. All Rights Reserved</p>
         <div class="social-media">
-          <a href="#"><img src="" alt="facebook icon"></a>
-          <a href="#"><img src="" alt="twitter icon"></a>
-          <a href="#"><img src="" alt="instagram icon"></a>
+          <a href="#"><img src="./assets/shared/desktop/facebook-icon.svg" alt="facebook icon"></a>
+          <a href="#"><img src="./assets/shared/desktop/twitter-icon.svg" alt="twitter icon"></a>
+          <a href="#"><img src="./assets/shared/desktop/instagram-icon.svg" alt="instagram icon"></a>
         </div>
-        <p>Copyright 2025</p>
       </div>  
   </div>
+  <script type="module" src="assets/script/router.js" ></script>
+  <script type="module" src="assets/script/home.js" ></script>
+  <script type="module" src="assets/script/fetchData.js" ></script>
 </body>
 </html>

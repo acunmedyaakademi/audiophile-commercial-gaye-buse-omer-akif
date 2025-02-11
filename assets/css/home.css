@@ -1,0 +1,33 @@
+.homePage {
+ padding: 16px;
+}
+
+.categories {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-bottom: 96px;
+}
+
+.category-item {
+  background-color: rgba(241, 241, 241, 1);
+}
+
+.product-zx9 {
+  background-color: rgba(216, 125, 74, 1);
+  padding: 50px;
+}
+
+.product-zx7 {
+  position: relative;
+  z-index: 0;
+}
+
+.product-zx7-text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  padding: 10px; 
+}
+
