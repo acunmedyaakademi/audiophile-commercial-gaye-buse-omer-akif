@@ -1,6 +1,6 @@
 import { fetchData } from "./fetchData.js";
 
-async function showProductDetails() {
+export async function showProductDetails() {
   const productContainer = document.querySelector(".product-detail");
 
   if (!productContainer) {
@@ -9,22 +9,24 @@ async function showProductDetails() {
   }
 
   const products = await fetchData();
+console.log("Gelen Ürünler:", products);
+
   
   const hash = window.location.hash;
+  console.log("Mevcut Hash:", hash);
   if (!hash.startsWith("#product-")) {
     console.error("Geçersiz ürün URL'si:", hash);
     return;
   }
 
   const slug = hash.replace("#product-", ""); 
+  console.log("Çıkarılan Slug:", slug); 
   const product = products.find(p => p.slug === slug);
 
-  if (!product) {
-    productContainer.innerHTML = "<h2>Ürün bulunamadı!</h2>";
-    return;
-  }
 
- 
+    productContainer.innerHTML = '';
+
+
   productContainer.innerHTML = `
     <a class="go-back-link" href="#">Go Back</a>
     <div class="product-detail-item">
@@ -35,37 +37,50 @@ async function showProductDetails() {
         <p class="product-detail-info">${product.description}</p>
         <h3 class="product-detail-price">$ ${product.price}</h3>
         <div class="product-count-area">
-          <p>- 1 +</p>
-          <a class="add-to-cart" href="#">Add to cart</a>
+          <div class="product-counter">
+            <p class="minus-counter">-</p>
+            <p class="count">1</p> 
+            <p class="plus-counter">+</p>
+          </div>
+          <a class="add-to-cart" href="#">ADD TO CART</a>
         </div>
       </div>
     </div>
+
     <div class="product-features">
-      <h2>Features</h2>
-      <p>${product.features}</p>
-      <h2>In the box</h2>
-      <ul>
-        ${product.includes.map(item => `<p>${item.quantity}x ${item.item}</p>`).join("")}
-      </ul>
-    </div>
-    <div class="product-detail-images">
-      <img src="${product.gallery[0].desktop}" alt="1x">
-      <img src="${product.gallery[1].desktop}" alt="2x">
-      <img src="${product.gallery[2].desktop}" alt="3x">
-    </div>
-    <div class="product-also-like">
-      ${product.others.map(other => `
-        <div class="product-also-like-item">
-          <img src="${other.image.desktop}" alt="${other.name}">
-          <h3>${other.name}</h3>
-          <a href="#product-${other.slug}">See Product</a>
+      <h2 class="features-header">Features</h2>
+      <p class="features-text">${product.features}</p>
+      <div class="in-the-box-content">
+        <h2 class="in-the-box-header">IN THE BOX</h2>
+        <div class="content-section">
+          ${product.includes.map(item => `<p><span>${item.quantity}x</span> ${item.item}</p>`).join("")}
         </div>
-      `).join("")}
+      </div>
+    </div>
+
+    <div class="product-detail-images">
+      <div class="left-product-detail-images">
+        <img src="${product.gallery[0].desktop}" alt="1x">
+        <img src="${product.gallery[1].desktop}" alt="2x">
+      </div>
+      <div class="right-product-detail-images">
+        <img src="${product.gallery[2].desktop}" alt="3x">
+      </div>
+    </div>
+
+    <div class="product-also-like">
+      <h2>YOU MAY ALSO LIKE</h2>
+      <div class="product-also-like-items">
+        ${product.others.map(other => `
+          <div class="product-also-like-item">
+            <img src="${other.image.desktop}" alt="${other.name}">
+            <h3>${other.name}</h3>
+            <a class="see-product-button" href="#product-${other.slug}">See Product</a>
+          </div>
+        `).join("")}
+      </div>
     </div>
   `;
 
   console.log("✅ Ürün detayları yüklendi:", product);
 }
-
-window.addEventListener("hashchange", showProductDetails);
-window.addEventListener("load", showProductDetails);
