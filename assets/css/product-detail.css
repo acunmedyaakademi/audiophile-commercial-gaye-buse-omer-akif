@@ -75,7 +75,6 @@ a {
   display: flex;
   gap: 20px;
   background-color: #f1f1f1;
-  padding: 15px;
   align-items: center;
   justify-content: center;
   width: 120px;
@@ -86,6 +85,8 @@ a {
   font-size: 13px;
   line-height: 17.76px;
   letter-spacing: 1px;
+  cursor: pointer;
+  color : #b5b5b5;
 }
 
 .product-counter .count {
@@ -129,7 +130,7 @@ a {
   margin-bottom: 88px;
 }
 
-.context-header {
+.in-the-boxt-header {
   font-weight: 700;
   font-size: 24px;
   line-height: 36px;
@@ -151,6 +152,11 @@ a {
   grid-template-rows: repeat(3,1fr);
 }
 
+.product-detail-images  img {
+  margin-bottom: 20px ;
+  margin-inline : auto;
+}
+
 .product-also-like {
   margin-bottom: 120px;
 }
@@ -170,6 +176,10 @@ a {
   flex-direction: column;
   gap: 32px;
   text-align: center;
+}
+
+.product-also-like-item img {
+  margin-inline : auto;
 }
 
 .see-product-button {
@@ -204,4 +214,63 @@ a {
 .shop-link {
   display: flex;
   gap: 13px;
+}
+
+@media (width >= 768px) {
+
+  .container-product-detail {
+    padding-inline : 40px;
+  }
+
+  .product-detail-item {
+    display: flex;
+    gap: 32px;
+    margin-bottom: 120px;
+  }
+
+  .product-detail-text h4 {
+    margin-top: 45px;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16.39px;
+    letter-spacing: 8.57px;
+    margin-bottom: 17px;
+  }
+
+  .product-detail-name {
+    line-height: 32px;
+    margin-bottom: 32px;
+  }
+
+  .product-detail-info {
+    margin-block : 32px;
+  }
+
+  .features-text{
+    margin-bottom: 120px;
+  }
+
+  .in-the-box-content {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+  }
+
+  .product-detail-images {
+    display: flex;
+    gap: 18px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 120px;
+  }
+
+  .product-also-like-items {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    margin-bottom: 120px;
+  }
+
+  .categories {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+  }
 }

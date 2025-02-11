@@ -61,6 +61,7 @@
     background-color: #d87d4a;
     padding: 15px 30px;
     text-decoration: none;
+    cursor: pointer;
   }
 }
 
@@ -110,52 +111,52 @@
   }
 }
 
-.main-content {
-  max-width: 327px;
-  margin-inline: auto;
-  text-align: center;
-  margin-top: 120px;
+  .main-content {
+    max-width: 327px;
+    margin-inline: auto;
+    text-align: center;
+    margin-top: 120px;
 
   img {
     border-radius: 4px;
   }
 
-  h3 {
-    text-transform: uppercase;
-    font-weight: 700;
-    font-size: 28px;
-    line-height: 38.25px;
-    letter-spacing: 1px;
-    color: #000000;
-    margin-top: 40px;
-    margin-bottom: 32px;
-  }
+    h3 {
+      text-transform: uppercase;
+      font-weight: 700;
+      font-size: 28px;
+      line-height: 38.25px;
+      letter-spacing: 1px;
+      color: #000000;
+      margin-top: 40px;
+      margin-bottom: 32px;
+    }
 
   span {
     color: #d87d4a;
   }
 
-  p {
-    font-weight: 400;
-    font-size: 15px;
-    line-height: 25px;
-    letter-spacing: 0px;
-    color: #7d7d7d;
+    p {
+      font-weight: 400;
+      font-size: 15px;
+      line-height: 25px;
+      letter-spacing: 0px;
+      color: #7d7d7d;
+    }
   }
-}
 
-.mobile-headphone {
-  display: block;
-}
+  .mobile-headphone {
+    display: block;
+  }
 
-.tablet-headphone {
-  display: none;
-}
+  .tablet-headphone {
+    display: none;
+  }
 
-.desktop-headphone {
-  display: none;
-}
-/* Tablet Start */
+  .desktop-headphone {
+    display: none;
+  }
+  /* Tablet Start */
 
 @media (width >= 768px) {
   .mobile-headphone {
@@ -167,7 +168,7 @@
   }
 }
 
-/* Desktop Start */
+  /* Desktop Start */
 
 @media (width >= 1280px) {
   .mobile-headphone {
