@@ -4,33 +4,40 @@ async function listCategories() {
   const products = await fetchData(); 
   const categories = [...new Set(products.map(product => product.category))]; 
 
-  const categoryList = document.querySelector(".categories");
+  const categoryLists = document.querySelectorAll(".categories");
 
-  if (!categoryList) {
+  if (!categoryLists.length) {
     console.log(".categories elementi bulunamadı, işlem yapılmadı!");
     return;
   }
 
-  categoryList.innerHTML = ""; 
+  
+  categoryLists.forEach(categoryList => {
+    
+    categoryList.innerHTML = `<p class="loading-text">Yükleniyor...</p>`;
 
-  categories.forEach(category => {
-    const categoryProduct = products.find(product => product.category === category);
+    setTimeout(() => { 
+      categoryList.innerHTML = ""; 
+      categories.forEach(category => {
+        const categoryProduct = products.find(product => product.category === category);
 
-    if (!categoryProduct) {
-      return;
-    }
+        if (!categoryProduct) {
+          return;
+        }
 
-    const categoryName = category.charAt(0).toUpperCase() + category.slice(1);
+        const categoryName = category.charAt(0).toUpperCase() + category.slice(1);
 
-    categoryList.innerHTML += 
-      `<div class="category-item">
-        <img src="./assets/shared/desktop/image-category-thumbnail-${category}.png" alt="${categoryName} Img">
-        <h3>${categoryName}</h3>
-        <a href="#">Shop</a>
-      </div>`;
+        categoryList.innerHTML += 
+          `<div class="category-item">
+            <img src="./assets/shared/desktop/image-category-thumbnail-${category}.png" alt="${categoryName} Img">
+            <h3>buse${categoryName}</h3>
+            <a href="#">Shop</a>
+          </div>`;
+      });
+
+      console.log("✅ Kategoriler başarıyla eklendi.");
+    }, 1000); 
   });
-
-  console.log("Kategoriler başarıyla eklendi.");
 }
 
 window.addEventListener("load", listCategories);
