@@ -1,5 +1,7 @@
 import { fetchData } from "./fetchData.js"; 
 
+
+
 async function listCategories() {
   const products = await fetchData(); 
   const categories = [...new Set(products.map(product => product.category))]; 
@@ -29,8 +31,8 @@ async function listCategories() {
 
         categoryList.innerHTML += 
           `<div class="category-item">
-            <img src="./assets/shared/desktop/image-category-thumbnail-${category}.png" alt="${categoryName} Img">
-            <h3>buse${categoryName}</h3>
+            <img src="./assets/shared/mobile/image-category-thumbnail-${category}-menu.png" alt="${categoryName} Img">
+            <h3>${categoryName}</h3>
             <a href="#">Shop</a>
           </div>`;
       });
