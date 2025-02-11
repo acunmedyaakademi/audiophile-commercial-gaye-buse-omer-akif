@@ -1,22 +1,12 @@
+import { showProductDetails } from "./product.js";
+
 const routes = {
   "#home": "assets/pages/home.html",
   "#headphones": "assets/pages/headphones.html",
   "#speakers": "assets/pages/speakers.html",
   "#earphones": "assets/pages/earphones.html",
   "#checkout": "assets/pages/checkout.html",
-  "#detail": "assets/pages/product-detail.html"
 };
-
-async function fetchProducts() {
-  try {
-    const response = await fetch("data.json");
-    if (!response.ok) throw new Error("JSON verisi alınamadı!");
-    return await response.json();
-  } catch (error) {
-    console.error("Fetch hatası:", error);
-    return [];
-  }
-}
 
 async function router() {
   const pageContainer = document.getElementById("page");
@@ -26,7 +16,7 @@ async function router() {
     return;
   }
 
-  const hash = window.location.hash || "#home"; 
+  const hash = window.location.hash || "#home";
 
   if (hash.startsWith("#product-")) {
     fetch("assets/pages/product-detail.html")
@@ -37,11 +27,15 @@ async function router() {
       .then(html => {
         pageContainer.innerHTML = html;
       })
+      .then(() => {
+        showProductDetails(); 
+        updatePageTitle(); 
+      })
       .catch(err => console.error(err.message));
     return;
   }
 
-  const page = routes[hash] || "assets/pages/404.html"; 
+  const page = routes[hash] || "assets/pages/404.html";
 
   fetch(page)
     .then(response => {
@@ -51,11 +45,15 @@ async function router() {
     .then(html => {
       pageContainer.innerHTML = html;
     })
+    .then(() => {
+      updatePageTitle(); 
+    })
     .catch(err => console.error(err.message));
 }
 
 window.addEventListener("hashchange", router);
 window.addEventListener("load", router);
+
 
 function updatePageTitle() {
   const pageTitle = document.querySelector(".page-title");
@@ -63,9 +61,12 @@ function updatePageTitle() {
   if (!pageTitle) return;
 
   const hash = window.location.hash.replace("#", ""); 
-  if (hash && hash !== "home") {
+
+  if (hash.startsWith("product-")) {
+    pageTitle.style.display = "none"; 
+  } else if (hash && hash !== "home") {
     const formattedTitle = hash.toUpperCase();
-    pageTitle.innerHTML = `<h1>${formattedTitle}</h1>`;
+    pageTitle.innerHTML = `<h1>${formattedTitle}</h1>`; 
     pageTitle.style.display = "block"; 
   } else {
     pageTitle.style.display = "none";
@@ -74,4 +75,3 @@ function updatePageTitle() {
 
 window.addEventListener("hashchange", updatePageTitle);
 window.addEventListener("load", updatePageTitle);
-

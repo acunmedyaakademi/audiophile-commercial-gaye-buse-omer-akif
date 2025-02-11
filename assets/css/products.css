@@ -70,6 +70,7 @@
   grid-template-columns: 1fr;
   gap: 68px;
   margin-top: 96px;
+  margin-bottom: 96px;
   max-width: 327px;
   margin-inline: auto;
 
@@ -166,6 +167,25 @@
   .tablet-headphone {
     display: block;
   }
+
+  .categories {
+    grid-template-columns: 1fr 1fr 1fr;
+    max-width: 1110px;
+
+    .category-item {
+      height: 204px;
+      margin-top: 0px;
+    }
+
+    .category-item:nth-child(1) {
+      margin-top: 0px;
+    }
+  }
+
+  
+
+  
+  
 }
 
   /* Desktop Start */
