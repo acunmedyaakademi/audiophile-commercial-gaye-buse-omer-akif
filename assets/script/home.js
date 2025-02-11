@@ -1,5 +1,7 @@
 import { fetchData } from "./fetchData.js"; 
 
+
+
 async function listCategories() {
   const products = await fetchData(); 
   const categories = [...new Set(products.map(product => product.category))]; 
