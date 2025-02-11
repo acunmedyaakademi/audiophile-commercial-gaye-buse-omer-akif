@@ -9,18 +9,17 @@ document.addEventListener("DOMContentLoaded", () => {
     overlay.classList.toggle("show");
   });
 
-});
+  // Menü içindeki herhangi bir linke tıklanınca menüyü kapatıp overlay gizledim
+  menuLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      navbar.classList.remove("show");
+      overlay.classList.remove("show");
+    });
+  });
 
-// Menü içindeki herhangi bir linke tıklanınca menüyü kapatıp overlay gizledim
-menuLinks.forEach(link => {
-  link.addEventListener("click", () => {
+  // Overlay'e tıklayınca menüyü kapatıp overlay gizledim
+  overlay.addEventListener("click", () => {
     navbar.classList.remove("show");
     overlay.classList.remove("show");
   });
-});
-
-// Overlay'e tıklayınca menüyü kapatıp overlay gizledim
-overlay.addEventListener("click", () => {
-  navbar.classList.remove("show");
-  overlay.classList.remove("show");
 });
