@@ -3,7 +3,8 @@ const routes = {
   "#headphones": "assets/pages/headphones.html",
   "#speakers": "assets/pages/speakers.html",
   "#earphones": "assets/pages/earphones.html",
-  "#checkout": "assets/pages/checkout.html"
+  "#checkout": "assets/pages/checkout.html",
+  "#detail": "assets/pages/product-detail.html"
 };
 
 async function fetchProducts() {
