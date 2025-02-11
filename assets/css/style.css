@@ -64,10 +64,10 @@
   width: 100%;
 }
 
-.menuCategoriesMobil ul {
+/* .menuCategoriesMobil ul {
   flex-direction: column;
   gap: 15px;
-}
+} */
 
 .menuCategoriesMobil.show {
   display: flex;
@@ -77,19 +77,15 @@
   padding: 32px 24px;
   height: 100vh;
 
-  .menuCategoriesMobil {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 68px;
-    margin-top: 175px;
-  }
-
   .menu-category-item {
     background-color: #f1f1f1;
     border-radius: 8px;
     position: relative;
     text-align: center;
     min-height: 165px;
+    width: 50%;
+    max-width: 327px;
+    margin-inline: auto;
 
     h3 {
       font-weight: 700;
@@ -161,6 +157,18 @@
 }
 
 @media (width >= 768px) {
+.navbar,
+.menuCategoriesMobil {
+  flex-direction: row;
+
+}
+
+.menu-category-item {
+  height: 165px;
+  align-content: center;
+}
+
+
   .page-title {
     height: 246px;
   }
@@ -170,6 +178,19 @@
     line-height: 44px;
     letter-spacing: 1.43px;
   }
+
+  .menuCategoriesMobil.show {
+    
+    .menu-category-item:nth-child(1) {
+      margin-top: 56px;
+    }
+
+    .menu-category-item {
+      margin-top: 56px;
+    }
+  }
+
+  
 }
 
 @media (width >= 1110px) {
