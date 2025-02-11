@@ -89,6 +89,11 @@ a {
   color : #b5b5b5;
 }
 
+.minus-counter:hover, .plus-counter:hover {
+  color: #d87d4a;
+
+}
+
 .product-counter .count {
   font-weight: 700;
   font-size: 13px;
@@ -98,7 +103,7 @@ a {
 }
 
 .add-to-cart, .see-product-button {
-  width: 160;
+  width: 160px;
   font-weight: 700;
   font-size: 13px;
   line-height: 17.76px;
@@ -108,6 +113,11 @@ a {
   background-color: #d87d4a;
   padding-block: 15px;
   padding-inline : 30.5px;
+}
+
+.add-to-cart:hover, .see-product-button:hover {
+  background-color: #fbaf85;
+  cursor: pointer;
 }
 
 .product-features {
@@ -161,7 +171,7 @@ a {
   margin-bottom: 120px;
 }
 
-.product-also-like h2 {
+.also-like-header {
   margin-top: 120px;
   font-weight: 700;
   font-size: 24px;
@@ -178,12 +188,20 @@ a {
   text-align: center;
 }
 
-.product-also-like-item img {
+.product-also-like-item-image {
   margin-inline : auto;
 }
 
+.product-also-like-name {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 32.78px;
+  letter-spacing: 1.71px;
+  text-align: center;
+}
+
 .see-product-button {
-  max-width: 160px;
+  /* max-width: 160px; */
   margin-inline : auto;
 }
 
@@ -214,6 +232,10 @@ a {
 .shop-link {
   display: flex;
   gap: 13px;
+}
+
+.shop-link:hover {
+  color: #D87D4A;
 }
 
 @media (width >= 768px) {
@@ -269,8 +291,66 @@ a {
     margin-bottom: 120px;
   }
 
+  .product-also-like-item {
+    gap: 40px;
+  }
+
   .categories {
     display: grid;
     grid-template-columns: repeat(3,1fr);
+    gap: 10px;
+  }
+}
+
+@media (width >= 1110px) {
+
+  .container-product-detail {
+    padding-inline : 165px;
+  }
+
+  .product-detail-item {
+    display: flex;
+    gap: 124px;
+    margin-bottom: 160px;
+  }
+
+  .product-detail-text h4 {
+    margin-top: 77px;
+  }
+
+  .product-detail-price {
+    margin-bottom: 47px;
+  }
+
+  .product-features {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 125px;
+  }
+
+  .features-header {
+    margin-bottom: 0;
+  }
+
+  .features-text {
+    margin-top: 32px;
+  }
+
+  .in-the-box-content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .also-like-header {
+    margin-top: 160px;
+    margin-bottom: 64px;
+  }
+
+  .product-also-like-item-image {
+    margin-bottom: 40px;
+  }
+  
+  .categories {
+    gap: 30px;
   }
 }
