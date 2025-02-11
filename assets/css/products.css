@@ -65,10 +65,6 @@
   }
 }
 
-.product-headphones-text a:hover {
-  background-color: #FBAF85;
-}
-
 .categories {
   display: grid;
   grid-template-columns: 1fr;
@@ -115,57 +111,52 @@
   }
 }
 
-.category-item a:hover {
-  color: #FBAF85;
-}
-
-.main-content {
-  max-width: 327px;
-  margin-inline: auto;
-  text-align: center;
-  margin-top: 120px;
+  .main-content {
+    max-width: 327px;
+    margin-inline: auto;
+    text-align: center;
+    margin-top: 120px;
 
   img {
     border-radius: 4px;
-    width: 100%;
   }
 
-  h3 {
-    text-transform: uppercase;
-    font-weight: 700;
-    font-size: 28px;
-    line-height: 38.25px;
-    letter-spacing: 1px;
-    color: #000000;
-    margin-top: 40px;
-    margin-bottom: 32px;
-  }
+    h3 {
+      text-transform: uppercase;
+      font-weight: 700;
+      font-size: 28px;
+      line-height: 38.25px;
+      letter-spacing: 1px;
+      color: #000000;
+      margin-top: 40px;
+      margin-bottom: 32px;
+    }
 
   span {
     color: #d87d4a;
   }
 
-  p {
-    font-weight: 400;
-    font-size: 15px;
-    line-height: 25px;
-    letter-spacing: 0px;
-    color: #7d7d7d;
+    p {
+      font-weight: 400;
+      font-size: 15px;
+      line-height: 25px;
+      letter-spacing: 0px;
+      color: #7d7d7d;
+    }
   }
-}
 
-.mobile-headphone {
-  display: block;
-}
+  .mobile-headphone {
+    display: block;
+  }
 
-.tablet-headphone {
-  display: none;
-}
+  .tablet-headphone {
+    display: none;
+  }
 
-.desktop-headphone {
-  display: none;
-}
-/* Tablet Start */
+  .desktop-headphone {
+    display: none;
+  }
+  /* Tablet Start */
 
 @media (width >= 768px) {
   .mobile-headphone {
@@ -175,53 +166,9 @@
   .tablet-headphone {
     display: block;
   }
-
-  .container-headphones {
-    max-width: 689px;
-  }
-  
-  .product-headphones-text {
-  
-    h3 {
-      font-size: 40px;
-      line-height: 44px;
-      letter-spacing: 1.43px;
-    }
-  }
-  
-  .categories {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-    margin-top: 80px;
-  }
-  
-  .category-item {
-    background-color: #F1F1F1;
-    border-radius: 8px;
-    position: relative;
-    text-align: center;
-    min-height: 165px;
-  
-    img {
-      top: -38px;
-      right: 73px;
-    }
-  }
-  
-  .main-content {
-    max-width: 689px;
-  
-    h3 {
-      font-size: 40px;
-      line-height: 44px;
-      letter-spacing: 1.43px;
-      margin-top: 63px;
-    }
-  }
 }
 
-/* Desktop Start */
+  /* Desktop Start */
 
 @media (width >= 1280px) {
   .mobile-headphone {
