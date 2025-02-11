@@ -1,7 +1,7 @@
 @import "reset.css";
 
 body {
-  font-family: Manrope;
+  font-family: "Manrope", sans-serif;
 }
 
 a {
@@ -205,14 +205,14 @@ a {
   margin-inline : auto;
 }
 
-.categories {
+/* .categories {
   display: flex;
   flex-direction: column;
   gap: 16px;
   text-align: center;
-}
+} */
 
-.category-item {
+/* .category-item {
   display: flex;
   flex-direction: column;
   background-color: #f1f1f1;
@@ -227,7 +227,7 @@ a {
 
 .category-item h3 {
   margin-bottom: 17px;
-}
+} */
 
 .shop-link {
   display: flex;
@@ -295,11 +295,11 @@ a {
     gap: 40px;
   }
 
-  .categories {
+  /* .categories {
     display: grid;
     grid-template-columns: repeat(3,1fr);
     gap: 10px;
-  }
+  } */
 }
 
 @media (width >= 1110px) {
@@ -350,7 +350,7 @@ a {
     margin-bottom: 40px;
   }
   
-  .categories {
+  /* .categories {
     gap: 30px;
-  }
+  } */
 }
