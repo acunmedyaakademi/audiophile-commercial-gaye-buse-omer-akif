@@ -1,5 +1,8 @@
 import { fetchData } from "./fetchData.js";
 
+let orders = [];
+let productQuantity = 1;
+
 export async function showProductDetails() {
   const productContainer = document.querySelector(".product-detail");
 
@@ -22,122 +25,73 @@ export async function showProductDetails() {
   console.log("Çıkarılan Slug:", slug);
   const product = products.find((p) => p.slug === slug);
 
-  productContainer.innerHTML = "";
-
   productContainer.innerHTML = `
     <a class="go-back-link" href="#">Go Back</a>
     <div class="product-detail-item">
-      <img class="product-img" src="${product.image.desktop}" alt="${product.name
-    }">
+      <img class="product-img" src="${product.image.desktop}" alt="${product.name}">
       <div class="product-detail-text">
         <h4>${product.isNew ? "NEW PRODUCT" : ""}</h4>
-        <h3 class="product-detail-name" data-id= ${product.id}>${product.name}</h3>
+        <h3 class="product-detail-name" data-id="${product.id}">${product.name}</h3>
         <p class="product-detail-info">${product.description}</p>
-        <h3 class="product-detail-price">$ ${product.price}"</h3>
+        <h3 class="product-detail-price">$ ${product.price}</h3>
         <div class="product-count-area">
           <div class="product-counter">
-            <p class="minus-counter">-</p>
-            <p class="count">1</p> 
-            <p class="plus-counter">+</p>
+            <button class="minus-counter">-</button>
+            <p class="count">${productQuantity}</p>
+            <button class="plus-counter">+</button>
           </div>
-          <button class="add-to-cart" data-isim= "${product.name
-    }" data-price= ${product.price} data-slug= ${product.slug
-    } >ADD TO CART</button>
+          <button class="add-to-cart" data-isim="${product.name}" data-price="${product.price}" data-slug="${product.slug}">ADD TO CART</button>
         </div>
-      </div>
-    </div>
-
-    <div class="product-features">
-      <div class = "product-features-content">
-        <h2 class="features-header">Features</h2>
-        <p class="features-text">${product.features}</p>
-      </div>
-      <div class="in-the-box-content">
-        <h2 class="in-the-box-header">IN THE BOX</h2>
-        <div class="content-section">
-          ${product.includes
-      .map((item) => `<p><span>${item.quantity}x</span> ${item.item}</p>`)
-      .join("")}
-        </div>
-      </div>
-    </div>
-
-    <div class="product-detail-images">
-      <div class="left-product-detail-images">
-        <img src="${product.gallery[0].desktop}" alt="1x">
-        <img src="${product.gallery[1].desktop}" alt="2x">
-      </div>
-      <div class="right-product-detail-images">
-        <img src="${product.gallery[2].desktop}" alt="3x">
-      </div>
-    </div>
-
-    <div class="product-also-like">
-      <h2 class = "also-like-header">YOU MAY ALSO LIKE</h2>
-      <div class="product-also-like-items">
-        ${product.others
-      .map(
-        (other) => `
-          <div class="product-also-like-item">
-            <img src="${other.image.desktop}" alt="${other.name}">
-            <h3>${other.name}</h3>
-            <a class="see-product-button" href="#product-${other.slug}">See Product</a>
-          </div>
-        `
-      )
-      .join("")}
       </div>
     </div>
   `;
 
-  console.log("✅ Ürün detayları yüklendi:", product);
+  document.querySelector(".plus-counter").addEventListener("click", increaseDetailQuantity);
+  document.querySelector(".minus-counter").addEventListener("click", decreaseDetailQuantity);
+  document.querySelector(".add-to-cart").addEventListener("click", addToCart);
 }
 
-const orders = []; // Kullanıcının sepete eklediği ürünleri tutar
 
-async function handleAddBasket() {
-  const products = await fetchData();
-  console.log("Ürünler yüklendi:", products);
-
-  // Ürünleri yükledikten sonra butonları içeren elementi dinle
-  document.body.addEventListener("click", function (e) {
-    if (e.target.classList.contains("add-to-cart")) {
-      handleAddButtons(e);
-    }
-  });
+function increaseDetailQuantity() {
+  productQuantity++;
+  document.querySelector(".count").innerText = productQuantity;
 }
 
-function handleAddButtons(e) {
-  e.preventDefault();
 
+function decreaseDetailQuantity() {
+  if (productQuantity > 1) {
+    productQuantity--;
+    document.querySelector(".count").innerText = productQuantity;
+  }
+}
+
+
+function addToCart(e) {
   const productName = e.target.dataset.isim;
-  const productPrice = e.target.dataset.price;
+  const productPrice = parseFloat(e.target.dataset.price);
   const productSlug = e.target.dataset.slug;
-  const productId = e.target.dataset.id;
 
-  console.log("Seçilen ürün ismi:", productName);
+  let existingProduct = orders.find((item) => item.name === productName);
 
-  let selectedProduct = orders.find((order) => order.name === productName);
-
-  if (selectedProduct) {
-    selectedProduct.quantity++;
+  if (existingProduct) {
+    existingProduct.quantity += productQuantity;
   } else {
     orders.push({
-      id: productId,
       name: productName,
       price: productPrice,
       slug: productSlug,
-      quantity: 1,
+      quantity: productQuantity,
     });
   }
 
-
-
   console.log("Güncellenmiş Sepet:", orders);
   renderOrders();
+
+  productQuantity = 1;
+  document.querySelector(".count").innerText = productQuantity;
 }
 
-// Sepeti Güncelleyen Fonksiyon
+
 function renderOrders() {
   const cartContainer = document.querySelector(".cart-container");
 
@@ -146,7 +100,9 @@ function renderOrders() {
     <a href="#">Remove all</a>
     <hr />
     <ul>
-      ${orders.map(x => `
+      ${orders
+      .map(
+        (x) => `
         <li class="orderLi">
           <div class="orderProductInfo">
             <img class="orderProductImg" src='assets/cart/image-${x.slug}.jpg' alt="">
@@ -161,45 +117,29 @@ function renderOrders() {
             <button class="order-plus-counter">+</button>
           </div>
         </li>
-      `).join("")}
+      `
+      )
+      .join("")}
     </ul>
     <h3>Total $ ${orders.reduce((sum, item) => sum + (item.price * item.quantity), 0)}</h3>
     <a  href="#checkout" class="checkout-btn">CHECKOUT</a>
   `;
 
-  document.querySelectorAll(".order-minus-counter").forEach(btn => {
-    btn.addEventListener("click", removeFromCard);
+
+  document.querySelectorAll(".order-minus-counter").forEach((btn) => {
+    btn.addEventListener("click", removeFromCart);
   });
 
-
-  document.querySelectorAll(".order-plus-counter").forEach(btn => {
+  document.querySelectorAll(".order-plus-counter").forEach((btn) => {
     btn.addEventListener("click", increaseQuantity);
   });
-}
 
-
-function removeFromCard(e) {
-  const productId = e.target.closest(".orderLi").querySelector(".orderTexts h6").textContent;
-
-  let product = orders.find(x => x.name === productId);
-
-  if (product) {
-    if (product.quantity > 1) {
-      product.quantity--;
-    } else {
-      const index = orders.indexOf(product);
-      if (index > -1) {
-        orders.splice(index, 1);
-      }
-    }
-    renderOrders();
-  }
+  updateProductDetails();
 }
 
 function increaseQuantity(e) {
-  const productId = e.target.closest(".orderLi").querySelector(".orderTexts h6").textContent;
-
-  let product = orders.find(x => x.name === productId);
+  const productName = e.target.closest(".orderLi").querySelector(".orderTexts h6").textContent;
+  let product = orders.find((x) => x.name === productName);
 
   if (product) {
     product.quantity++;
@@ -207,5 +147,34 @@ function increaseQuantity(e) {
   }
 }
 
+function removeFromCart(e) {
+  const productName = e.target.closest(".orderLi").querySelector(".orderTexts h6").textContent;
+  let product = orders.find((x) => x.name === productName);
 
-document.addEventListener("DOMContentLoaded", handleAddBasket);
+  if (product) {
+    if (product.quantity > 1) {
+      product.quantity--;
+    } else {
+      orders = orders.filter((x) => x.name !== productName);
+    }
+    renderOrders();
+  }
+}
+
+
+function updateProductDetails() {
+  const productName = document.querySelector(".product-detail-name").textContent;
+  const countElement = document.querySelector(".count");
+
+  let product = orders.find((x) => x.name === productName);
+
+  if (product) {
+    countElement.innerText = product.quantity;
+  } else {
+    countElement.innerText = 1;
+  }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  showProductDetails();
+});

@@ -1,4 +1,4 @@
-import { fetchData } from "./fetchData.js";
+
 
 // const orders = []; // Kullanıcının sepete eklediği ürünleri tutar
 
