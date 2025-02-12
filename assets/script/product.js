@@ -11,7 +11,6 @@ export async function showProductDetails() {
   const products = await fetchData();
   console.log("Gelen Ürünler:", products);
 
-
   const hash = window.location.hash;
   console.log("Mevcut Hash:", hash);
   if (!hash.startsWith("#product-")) {
@@ -21,17 +20,19 @@ export async function showProductDetails() {
 
   const slug = hash.replace("#product-", "");
   console.log("Çıkarılan Slug:", slug);
-  const product = products.find(p => p.slug === slug);
+  const product = products.find((p) => p.slug === slug);
 
-  productContainer.innerHTML = '';
+  productContainer.innerHTML = "";
 
   productContainer.innerHTML = `
     <a class="go-back-link" href="#">Go Back</a>
     <div class="product-detail-item">
-      <img class="product-img" src="${product.image.desktop}" alt="${product.name}">
+      <img class="product-img" src="${product.image.desktop}" alt="${
+    product.name
+  }">
       <div class="product-detail-text">
         <h4>${product.isNew ? "NEW PRODUCT" : ""}</h4>
-        <h3 class="product-detail-name">${product.name}</h3>
+        <h3 class="product-detail-name" data-id= ${product.id}>${product.name}</h3>
         <p class="product-detail-info">${product.description}</p>
         <h3 class="product-detail-price">$ ${product.price}"</h3>
         <div class="product-count-area">
@@ -40,7 +41,11 @@ export async function showProductDetails() {
             <p class="count">1</p> 
             <p class="plus-counter">+</p>
           </div>
-          <button class="add-to-cart" data-isim= "${product.name}" data-price= ${product.price}>ADD TO CART</button>
+          <button class="add-to-cart" data-isim= "${
+            product.name
+          }" data-price= ${product.price} data-slug= ${
+    product.slug
+  } >ADD TO CART</button>
         </div>
       </div>
     </div>
@@ -51,7 +56,9 @@ export async function showProductDetails() {
       <div class="in-the-box-content">
         <h2 class="in-the-box-header">IN THE BOX</h2>
         <div class="content-section">
-          ${product.includes.map(item => `<p><span>${item.quantity}x</span> ${item.item}</p>`).join("")}
+          ${product.includes
+            .map((item) => `<p><span>${item.quantity}x</span> ${item.item}</p>`)
+            .join("")}
         </div>
       </div>
     </div>
@@ -69,13 +76,17 @@ export async function showProductDetails() {
     <div class="product-also-like">
       <h2 class = "also-like-header">YOU MAY ALSO LIKE</h2>
       <div class="product-also-like-items">
-        ${product.others.map(other => `
+        ${product.others
+          .map(
+            (other) => `
           <div class="product-also-like-item">
             <img src="${other.image.desktop}" alt="${other.name}">
             <h3>${other.name}</h3>
             <a class="see-product-button" href="#product-${other.slug}">See Product</a>
           </div>
-        `).join("")}
+        `
+          )
+          .join("")}
       </div>
     </div>
   `;
@@ -84,7 +95,6 @@ export async function showProductDetails() {
 }
 
 const orders = []; // Kullanıcının sepete eklediği ürünleri tutar
-
 
 async function handleAddBasket() {
   const products = await fetchData();
@@ -103,19 +113,26 @@ function handleAddButtons(e) {
 
   const productName = e.target.dataset.isim;
   const productPrice = e.target.dataset.price;
+  const productSlug = e.target.dataset.slug;
+  const productId = e.target.dataset.id;
+
   console.log("Seçilen ürün ismi:", productName);
 
-  let selectedProduct = orders.find(order => order.name === productName);
+  let selectedProduct = orders.find((order) => order.name === productName);
 
   if (selectedProduct) {
     selectedProduct.quantity++;
   } else {
     orders.push({
+      id: productId,
       name: productName,
       price: productPrice,
+      slug: productSlug,
       quantity: 1,
     });
   }
+
+  
 
   console.log("Güncellenmiş Sepet:", orders);
   renderOrders();
@@ -123,28 +140,73 @@ function handleAddButtons(e) {
 
 // Sepeti Güncelleyen Fonksiyon
 function renderOrders() {
-  const cartContainer = document.querySelector('.cart-container');
+  const cartContainer = document.querySelector(".cart-container");
 
-  if (!cartContainer) {
-    console.error("HATA: .cart-container bulunamadı!");
-    return;
-  }
+  cartContainer.innerHTML = `
+    <h2>CART (<span id="cart-count">${orders.length}</span>)</h2>
+    <a href="#">Remove all</a>
+    <hr />
+    <ul>
+      ${orders.map(x => `
+        <li class="orderLi">
+          <div class="orderProductInfo">
+            <img class="orderProductImg" src='assets/cart/image-${x.slug}.jpg' alt="">
+            <div class="orderTexts">
+              <h6>${x.name}</h6>
+              <span class="orderPrice">$${x.price}</span>     
+            </div>
+          </div>
+          <div class="order-product-counter">
+            <button class="order-minus-counter">-</button>
+            <p class="order-count">${x.quantity}</p> 
+            <button class="order-plus-counter">+</button>
+          </div>
+        </li>
+      `).join("")}
+    </ul>
+    <h3>Total $ ${orders.reduce((sum, item) => sum + (item.price * item.quantity), 0)}</h3>
+    <button class="checkout-btn">CHECKOUT</button>
+  `;
 
-  if (orders.length != 0) {
-    cartContainer.innerHTML = orders.map(x => `
-      <h2>${x.name}</h2>
-      <h6>${x.price}</h6>
-      <hr />
-      <p>Your Cart is empty.</p>
-      <p>Continue shopping on the audiophile website <a href="#">homepage</a>.</p>
-      <h3>Total $0</h3>
-      <button class="checkout-btn">CHECKOUT</button>
-    `) ;
-    return;
-  }
+  document.querySelectorAll(".order-minus-counter").forEach(btn => {
+    btn.addEventListener("click", removeFromCard);
+  });
 
+
+  document.querySelectorAll(".order-plus-counter").forEach(btn => {
+    btn.addEventListener("click", increaseQuantity);
+  });
 }
 
 
-// Sayfa yüklendiğinde butonlara event listener ekle
+function removeFromCard(e) {
+  const productId = e.target.closest(".orderLi").querySelector(".orderTexts h6").textContent;
+  
+  let product = orders.find(x => x.name === productId);
+
+  if (product) {
+    if (product.quantity > 1) {
+      product.quantity--;
+    } else {
+      const index = orders.indexOf(product);
+      if (index > -1) {
+        orders.splice(index, 1);
+      }
+    }
+    renderOrders();
+  }
+}
+
+function increaseQuantity(e) {
+  const productId = e.target.closest(".orderLi").querySelector(".orderTexts h6").textContent;
+  
+  let product = orders.find(x => x.name === productId);
+
+  if (product) {
+    product.quantity++; 
+    renderOrders(); 
+  }
+}
+
+
 document.addEventListener("DOMContentLoaded", handleAddBasket);
