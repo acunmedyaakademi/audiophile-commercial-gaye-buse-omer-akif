@@ -33,14 +33,14 @@ export async function showProductDetails() {
         <h4>${product.isNew ? "NEW PRODUCT" : ""}</h4>
         <h3 class="product-detail-name">${product.name}</h3>
         <p class="product-detail-info">${product.description}</p>
-        <h3 class="product-detail-price">$ ${product.price}</h3>
+        <h3 class="product-detail-price">$ ${product.price}"</h3>
         <div class="product-count-area">
           <div class="product-counter">
             <p class="minus-counter">-</p>
             <p class="count">1</p> 
             <p class="plus-counter">+</p>
           </div>
-          <button class="add-to-cart" data-isim= "${product.name}">ADD TO CART</button>
+          <button class="add-to-cart" data-isim= "${product.name}" data-price= ${product.price}>ADD TO CART</button>
         </div>
       </div>
     </div>
@@ -102,6 +102,7 @@ function handleAddButtons(e) {
   e.preventDefault();
 
   const productName = e.target.dataset.isim;
+  const productPrice = e.target.dataset.price;
   console.log("Seçilen ürün ismi:", productName);
 
   let selectedProduct = orders.find(order => order.name === productName);
@@ -111,6 +112,7 @@ function handleAddButtons(e) {
   } else {
     orders.push({
       name: productName,
+      price: productPrice,
       quantity: 1,
     });
   }
@@ -131,6 +133,7 @@ function renderOrders() {
   if (orders.length != 0) {
     cartContainer.innerHTML = orders.map(x => `
       <h2>${x.name}</h2>
+      <h6>${x.price}</h6>
       <hr />
       <p>Your Cart is empty.</p>
       <p>Continue shopping on the audiophile website <a href="#">homepage</a>.</p>
