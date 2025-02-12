@@ -40,20 +40,7 @@ export async function showProductDetails() {
             <p class="count">${productQuantity}</p>
             <button class="plus-counter">+</button>
           </div>
-          <button class="add-to-cart" data-isim= "${product.name}">ADD TO CART</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="product-features">
-      <div class = "product-features-content">
-        <h2 class="features-header">Features</h2>
-        <p class="features-text">${product.features}</p>
-      </div>
-      <div class="in-the-box-content">
-        <h2 class="in-the-box-header">IN THE BOX güncel</h2>
-        <div class="content-section">
-          ${product.includes.map(item => `<p><span>${item.quantity}x</span> ${item.item}</p>`).join("")}
+          <button class="add-to-cart" data-isim="${product.name}" data-price="${product.price}" data-slug="${product.slug}">ADD TO CART</button>
         </div>
       </div>
     </div>
@@ -64,12 +51,10 @@ export async function showProductDetails() {
   document.querySelector(".add-to-cart").addEventListener("click", addToCart);
 }
 
-
 function increaseDetailQuantity() {
   productQuantity++;
   document.querySelector(".count").innerText = productQuantity;
 }
-
 
 function decreaseDetailQuantity() {
   if (productQuantity > 1) {
@@ -77,7 +62,6 @@ function decreaseDetailQuantity() {
     document.querySelector(".count").innerText = productQuantity;
   }
 }
-
 
 function addToCart(e) {
   const productName = e.target.dataset.isim;
@@ -109,19 +93,22 @@ function renderOrders() {
   const cartContainer = document.querySelector(".cart-container");
 
   cartContainer.innerHTML = `
-    <h2>CART (<span id="cart-count">${orders.length}</span>)</h2>
-    <a href="#">Remove all</a>
-    <hr />
-    <ul>
+  <div class="cart-container-inner">
+    <div class="dialog-header">
+      <h2>CART (<span id="cart-count">${orders.length}</span>)</h2>
+      <a href="#" class="remove-all">Remove all</a>
+    </div>
+
+    <ul class="cart-items">
       ${orders
       .map(
         (x) => `
-        <li class="orderLi">
-          <div class="orderProductInfo">
-            <img class="orderProductImg" src='assets/cart/image-${x.slug}.jpg' alt="">
-            <div class="orderTexts">
+        <li class="order-item">
+          <div class="order-product-info">
+            <img class="order-product-img" src="assets/cart/image-${x.slug}.jpg" alt="${x.name}">
+            <div class="order-texts">
               <h6>${x.name}</h6>
-              <span class="orderPrice">$${x.price}</span>     
+              <span class="order-price">$${x.price}</span>     
             </div>
           </div>
           <div class="order-product-counter">
@@ -134,9 +121,14 @@ function renderOrders() {
       )
       .join("")}
     </ul>
-    <h3>Total $ ${orders.reduce((sum, item) => sum + (item.price * item.quantity), 0)}</h3>
-    <a  href="#checkout" class="checkout-btn">CHECKOUT</a>
-  `;
+
+    <div class="cart-total">
+      <h3>Total: <span class="total-price">$${orders.reduce((sum, item) => sum + item.price * item.quantity, 0)}</span></h3>
+    </div>
+
+    <button class="checkout-btn">CHECKOUT</button>
+  </div>
+`;
 
 
   document.querySelectorAll(".order-minus-counter").forEach((btn) => {
@@ -173,7 +165,6 @@ function removeFromCart(e) {
     renderOrders();
   }
 }
-
 
 function updateProductDetails() {
   const productName = document.querySelector(".product-detail-name").textContent;

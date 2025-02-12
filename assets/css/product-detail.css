@@ -325,7 +325,8 @@ a {
 @media (width >= 1110px) {
 
   .container-product-detail {
-    padding-inline : 165px;
+    max-width: 1110px;
+    margin-inline: auto;
   }
 
   .product-detail-item {
