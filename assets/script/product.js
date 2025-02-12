@@ -23,9 +23,7 @@ export async function showProductDetails() {
   console.log("Çıkarılan Slug:", slug);
   const product = products.find(p => p.slug === slug);
 
-
   productContainer.innerHTML = '';
-
 
   productContainer.innerHTML = `
     <a class="go-back-link" href="#">Go Back</a>
