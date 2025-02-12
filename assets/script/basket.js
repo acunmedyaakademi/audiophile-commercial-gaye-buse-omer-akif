@@ -1,89 +1,61 @@
 import { fetchData } from "./fetchData.js";
 
-const orders = []; // kullanıcının sepete eklediği ürünleri tutar
+// const orders = []; // Kullanıcının sepete eklediği ürünleri tutar
 
-async function handleAddBasket() {
+// async function handleAddBasket() {
+//   const products = await fetchData();
+//   console.log("Ürünler yüklendi:", products);
 
-  const products = await fetchData();
+//   // Ürünleri yükledikten sonra butonları içeren elementi dinle
+//   document.body.addEventListener("click", function (e) {
+//     if (e.target.classList.contains("add-to-cart")) {
+//       handleAddButtons(e);
+//     }
+//   });
+// }
 
-  const addBtns = document.querySelectorAll('.add-to-cart');
+// function handleAddButtons(e) {
+//   e.preventDefault();
 
-  for (const btn of addBtns) {
-    btn.addEventListener('click', handleAddButtons);
-  }
+//   const productName = e.target.dataset.isim;
+//   console.log("Seçilen ürün ismi:", productName);
 
-  function handleAddButtons(e) {
-    e.preventDefault();
+//   let selectedProduct = orders.find(order => order.name === productName);
 
-    const productName = e.target.dataset.isim;
-    console.log('Seçilen ürün ismi: ' + productName)
+//   if (selectedProduct) {
+//     selectedProduct.quantity++;
+//   } else {
+//     orders.push({
+//       name: productName,
+//       quantity: 1,
+//     });
+//   }
 
-    let selectedProduct = orders.find(order => order.name === productName);
-    console.log('Seçilen ürün: ' + selectedProduct)
+//   console.log("Güncellenmiş Sepet:", orders);
+//   renderOrders();
+// }
 
-    if (selectedProduct) {
-      selectedProduct.quantity++;
-    } else {
-      orders.push({
-        name: productName,
-        quantity: 1,
-      });
-    }
-  }
-  renderOrders();
-}
+// // Sepeti Güncelleyen Fonksiyon
+// function renderOrders() {
+//   const cartContainer = document.querySelector('.cart-container');
 
-let totalQuantity = 0; // toplam ürün miktarı
-let totalPrice = 0; // toplam fiyat
+//   if (!cartContainer) {
+//     console.error("HATA: .cart-container bulunamadı!");
+//     return;
+//   }
 
-function renderOrders() {
-  orderList.innerHTML = ''; // siparişleri listelemek için içeriği sıfırlanıyor
-  totalQuantity = 0;
-  totalPrice = 0;
-  productCounter.innerText = ''; // toplam tatlı miktarının gösterildiği alan
-  totalOrderPrice.innerText = ''; // toplam fiyatın gösterildiği alan
+//   if (orders.length === 0) {
+//     cartContainer.innerHTML = `
+//       <h2>CART (0)</h2>
+//       <hr />
+//       <p>Your Cart is empty.</p>
+//       <p>Continue shopping on the audiophile website <a href="#">homepage</a>.</p>
+//       <h3>Total $0</h3>
+//       <button class="checkout-btn">CHECKOUT</button>
+//     `;
+//     return;
+//   }
+// }
 
-  for (const order of orders) {
-    totalQuantity += Number(order.quantity);
-    const dessert = desserts.find(d => d.name === order.name);
-    const onlyPrice = Number(dessert.price.slice(1)); // var olan dolar işareti için => slice
-    const totalPerPrice = Number((onlyPrice * order.quantity.toFixed(2)));
-    totalPrice += totalPerPrice;
-
-    orderList.innerHTML += `
-      <li class="order-cart">
-        <div class="order-info">
-          <h4>${order.name}</h4>
-          <div class="sub-info">
-            <span class="quantity-span">${order.quantity}x</span>
-            <div class="price">
-              <span class="orjPrice">@${dessert.price}</span>
-              <span class="lastPrice">$${totalPerPrice}</span>
-            </div>
-          </div>
-        </div>
-        <div class="deleteBtn" data-name="${order.name}">
-          <img src="assets/img/remove-button.svg" alt="Remove Button Icon">
-        </div>
-      </li>
-    `;
-  }
-  productCounter.innerText = totalQuantity;
-  totalOrderPrice.innerText = `$${totalPrice}`;
-
-  const deleteBtns = document.querySelectorAll('.deleteBtn');
-  for (const deleteBtn of deleteBtns) {
-    deleteBtn.addEventListener('click', deleteProducts);
-  }
-  if (productCounter.innerText == 0) { // eğer toplam tatlı miktarı 0 ise
-    fullOrderCart.classList.remove('d-block'); // dolu sepeti gizle
-    emptyOrderCart.classList.remove('d-none');
-    emptyOrderCart.classList.add('d-block'); // boş sepeti göster
-  } else {
-    fullOrderCart.classList.add('d-block'); // dolu sepeti göster
-    emptyOrderCart.classList.remove('d-block');
-    emptyOrderCart.classList.add('d-none'); // boş sepeti gizle
-  }
-}
-
-window.addEventListener("load", handleAddBasket);
+// // Sayfa yüklendiğinde butonlara event listener ekle
+// document.addEventListener("DOMContentLoaded", handleAddBasket);
