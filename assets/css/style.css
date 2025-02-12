@@ -158,7 +158,63 @@
 .orderLi {
   list-style: none;
 
-  .orderProductInfo {
+}
+
+dialog {
+  width: 100%;
+  margin-top: 114px;
+  margin-inline: 24px;
+  border-radius: 8px;
+  border: none;
+  padding: 32px 28px;
+  align-content: center;
+
+  .dialog-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 31px;
+
+    a {
+      font-family: Manrope;
+      font-weight: 400;
+      font-size: 15px;
+      line-height: 25px;
+      letter-spacing: 0px;
+      text-decoration: underline;
+      text-decoration-style: solid;
+      text-decoration-thickness: Auto;
+      color: rgba(0, 0, 0, 0.5);
+    }
+
+    h2 {
+      font-family: Manrope;
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 24.59px;
+      letter-spacing: 1.29px;
+      color: #000000;
+    }
+  }
+
+  img {
+    width: 64px;
+  }
+
+  .cart-items {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .order-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .order-product-info {
+
     display: flex;
     align-items: center;
     gap: 16px;
@@ -205,6 +261,70 @@
   .order-minus-counter,
   .order-plus-counter {
     padding-inline: 8px;
+
+    h6 {
+      font-family: Manrope;
+      font-weight: 700;
+      font-size: 15px;
+      line-height: 25px;
+      letter-spacing: 0px;
+      color: #000000;
+    }
+
+    span {
+      font-family: Manrope;
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 25px;
+      letter-spacing: 0px;
+      color: rgba(0, 0, 0, 0.5);
+    }
+  }
+
+  .order-product-counter {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background-color: #f1f1f1;
+    height: 32px;
+    padding: 7px;
+
+    button {
+      padding-inline: 5px;
+      border: none;
+      background-color: transparent;
+    }
+  }
+
+  .cart-total {
+    margin-top: 32px;
+    margin-bottom: 24px;
+    h3 {
+      display: flex;
+      justify-content: space-between;
+      font-family: Manrope;
+      font-weight: 400;
+      font-size: 15px;
+      line-height: 25px;
+      letter-spacing: 0px;
+      color: rgba(0, 0, 0, 0.5);
+
+      span {
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 24.59px;
+        color: #000000;
+      }
+    }
+  }
+
+  .checkout-btn {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    padding: 15px;
+    background-color: #d87d4a;
+    border: none;
     font-family: Manrope;
     font-weight: 700;
     font-size: 13px;
@@ -214,6 +334,14 @@
     color: rgba(0, 0, 0, 0.25);
     border: none;
   }
+}
+
+@media (width >= 768px) {
+  .navbar,
+  .menuCategoriesMobil {
+    flex-direction: row;
+  }
+
 }
 
 @media (width >= 768px) {
@@ -246,12 +374,17 @@
       margin-top: 56px;
     }
   }
+
+  dialog {
+    width: 50%;
+    margin-inline-start: auto;
+  }
 }
 
 @media (width >= 1110px) {
   .desktopHeader {
-    width: 70%;
-    max-width: 780px;
+    width: 100%;
+    max-width: 1110px;
     margin-inline: auto;
     align-items: center;
     padding-inline: 0px;
@@ -286,5 +419,12 @@
   .hamburger-menu {
     display: none;
     cursor: pointer;
+  }
+
+  dialog {
+    width: 40%;
+    margin-inline-end: auto;
+    margin-right: 165px;
+    max-width: 377px;
   }
 }

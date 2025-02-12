@@ -93,19 +93,22 @@ function renderOrders() {
   const cartContainer = document.querySelector(".cart-container");
 
   cartContainer.innerHTML = `
-    <h2>CART (<span id="cart-count">${orders.length}</span>)</h2>
-    <a href="#">Remove all</a>
-    <hr />
-    <ul>
+  <div class="cart-container-inner">
+    <div class="dialog-header">
+      <h2>CART (<span id="cart-count">${orders.length}</span>)</h2>
+      <a href="#" class="remove-all">Remove all</a>
+    </div>
+
+    <ul class="cart-items">
       ${orders
         .map(
           (x) => `
-        <li class="orderLi">
-          <div class="orderProductInfo">
-            <img class="orderProductImg" src='assets/cart/image-${x.slug}.jpg' alt="">
-            <div class="orderTexts">
+        <li class="order-item">
+          <div class="order-product-info">
+            <img class="order-product-img" src="assets/cart/image-${x.slug}.jpg" alt="${x.name}">
+            <div class="order-texts">
               <h6>${x.name}</h6>
-              <span class="orderPrice">$${x.price}</span>     
+              <span class="order-price">$${x.price}</span>     
             </div>
           </div>
           <div class="order-product-counter">
@@ -118,9 +121,15 @@ function renderOrders() {
         )
         .join("")}
     </ul>
-    <h3>Total $ ${orders.reduce((sum, item) => sum + item.price * item.quantity, 0)}</h3>
+
+    <div class="cart-total">
+      <h3>Total: <span class="total-price">$${orders.reduce((sum, item) => sum + item.price * item.quantity, 0)}</span></h3>
+    </div>
+
     <button class="checkout-btn">CHECKOUT</button>
-  `;
+  </div>
+`;
+
 
   document.querySelectorAll(".order-minus-counter").forEach((btn) => {
     btn.addEventListener("click", removeFromCart);
