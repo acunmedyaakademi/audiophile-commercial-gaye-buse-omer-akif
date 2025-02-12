@@ -85,6 +85,7 @@ export async function showProductDetails() {
 
 const orders = []; // Kullanıcının sepete eklediği ürünleri tutar
 
+
 async function handleAddBasket() {
   const products = await fetchData();
   console.log("Ürünler yüklendi:", products);
@@ -127,18 +128,20 @@ function renderOrders() {
     return;
   }
 
-  if (orders.length === 0) {
-    cartContainer.innerHTML = `
-      <h2>CART (0)</h2>
+  if (orders.length != 0) {
+    cartContainer.innerHTML = orders.map(x => `
+      <h2>${x.name}</h2>
       <hr />
       <p>Your Cart is empty.</p>
       <p>Continue shopping on the audiophile website <a href="#">homepage</a>.</p>
       <h3>Total $0</h3>
       <button class="checkout-btn">CHECKOUT</button>
-    `;
+    `) ;
     return;
   }
+
 }
+
 
 // Sayfa yüklendiğinde butonlara event listener ekle
 document.addEventListener("DOMContentLoaded", handleAddBasket);
