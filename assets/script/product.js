@@ -126,7 +126,7 @@ function renderOrders() {
       <h3>Total: <span class="total-price">$${orders.reduce((sum, item) => sum + item.price * item.quantity, 0)}</span></h3>
     </div>
 
-    <button class="checkout-btn">CHECKOUT</button>
+    <a href= "#checkout" class="checkout-btn">CHECKOUT</a>
   </div>
 `;
 
