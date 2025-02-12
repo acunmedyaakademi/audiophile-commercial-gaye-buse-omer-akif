@@ -49,7 +49,7 @@ export async function showProductDetails() {
       <h2 class="features-header">Features</h2>
       <p class="features-text">${product.features}</p>
       <div class="in-the-box-content">
-        <h2 class="in-the-box-header">IN THE BOX</h2>
+        <h2 class="in-the-box-header">IN THE BOX güncel</h2>
         <div class="content-section">
           ${product.includes.map(item => `<p><span>${item.quantity}x</span> ${item.item}</p>`).join("")}
         </div>
