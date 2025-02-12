@@ -1,7 +1,7 @@
 import { fetchData } from "./fetchData.js";
 
-let orders = []; // Sepet
-let productQuantity = 1; // Detay sayfasındaki başlangıç miktarı
+let orders = []; 
+let productQuantity = 1; 
 
 export async function showProductDetails() {
   const productContainer = document.querySelector(".product-detail");
@@ -46,21 +46,18 @@ export async function showProductDetails() {
     </div>
   `;
 
-  // Artı ve Eksi butonları bağlanıyor
   document.querySelector(".plus-counter").addEventListener("click", increaseDetailQuantity);
   document.querySelector(".minus-counter").addEventListener("click", decreaseDetailQuantity);
-
-  // Sepete ekleme butonu
   document.querySelector(".add-to-cart").addEventListener("click", addToCart);
 }
 
-// 🔼 **Artı butonu: Yalnızca miktarı artırır**
+
 function increaseDetailQuantity() {
   productQuantity++;
   document.querySelector(".count").innerText = productQuantity;
 }
 
-// 🔽 **Eksi butonu: Yalnızca miktarı azaltır (1'den küçük olamaz)**
+
 function decreaseDetailQuantity() {
   if (productQuantity > 1) {
     productQuantity--;
@@ -68,7 +65,7 @@ function decreaseDetailQuantity() {
   }
 }
 
-// 🛒 **Add to Cart: Seçilen miktarda ürünü sepete ekler**
+
 function addToCart(e) {
   const productName = e.target.dataset.isim;
   const productPrice = parseFloat(e.target.dataset.price);
@@ -89,9 +86,12 @@ function addToCart(e) {
 
   console.log("Güncellenmiş Sepet:", orders);
   renderOrders();
+
+  productQuantity = 1;
+  document.querySelector(".count").innerText = productQuantity;
 }
 
-// 🛒 **Sepeti Günceller**
+
 function renderOrders() {
   const cartContainer = document.querySelector(".cart-container");
 
@@ -121,16 +121,11 @@ function renderOrders() {
         )
         .join("")}
     </ul>
-<<<<<<< HEAD
     <h3>Total $ ${orders.reduce((sum, item) => sum + item.price * item.quantity, 0)}</h3>
     <button class="checkout-btn">CHECKOUT</button>
-=======
-    <h3>Total $ ${orders.reduce((sum, item) => sum + (item.price * item.quantity), 0)}</h3>
-    <a  href="#checkout" class="checkout-btn">CHECKOUT</a>
->>>>>>> 5259a742a2d961ba65ae90907f83080f67bf2033
   `;
 
-  // Sepetteki butonları bağla
+
   document.querySelectorAll(".order-minus-counter").forEach((btn) => {
     btn.addEventListener("click", removeFromCart);
   });
@@ -142,7 +137,6 @@ function renderOrders() {
   updateProductDetails();
 }
 
-// 🔼 **Sepetteki miktarı artırır**
 function increaseQuantity(e) {
   const productName = e.target.closest(".orderLi").querySelector(".orderTexts h6").textContent;
   let product = orders.find((x) => x.name === productName);
@@ -153,7 +147,6 @@ function increaseQuantity(e) {
   }
 }
 
-// 🔽 **Sepetteki miktarı azaltır, sıfıra inerse ürünü çıkarır**
 function removeFromCart(e) {
   const productName = e.target.closest(".orderLi").querySelector(".orderTexts h6").textContent;
   let product = orders.find((x) => x.name === productName);
@@ -168,7 +161,7 @@ function removeFromCart(e) {
   }
 }
 
-// ✅ **Detay Sayfasındaki Miktarı Günceller**
+
 function updateProductDetails() {
   const productName = document.querySelector(".product-detail-name").textContent;
   const countElement = document.querySelector(".count");
@@ -182,7 +175,6 @@ function updateProductDetails() {
   }
 }
 
-// **Sayfa yüklenince fonksiyonları başlat**
 document.addEventListener("DOMContentLoaded", () => {
   showProductDetails();
 });
