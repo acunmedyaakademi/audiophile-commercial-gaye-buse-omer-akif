@@ -19,13 +19,11 @@ console.log("Gelen Ürünler:", products);
     return;
   }
 
-  const slug = hash.replace("#product-", ""); 
+  const slug = hash.replace("#product-", "");
   console.log("Çıkarılan Slug:", slug); 
   const product = products.find(p => p.slug === slug);
 
-
     productContainer.innerHTML = '';
-
 
   productContainer.innerHTML = `
     <a class="go-back-link" href="#">Go Back</a>
