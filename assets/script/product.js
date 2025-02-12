@@ -20,7 +20,7 @@ export async function showProductDetails() {
   }
 
   const slug = hash.replace("#product-", "");
-  console.log("Çıkarılan Slug:", slug); 
+  console.log("Çıkarılan Slug:", slug);
   const product = products.find(p => p.slug === slug);
 
   productContainer.innerHTML = '';
@@ -40,7 +40,7 @@ export async function showProductDetails() {
             <p class="count">1</p> 
             <p class="plus-counter">+</p>
           </div>
-          <a class="add-to-cart" href="#">ADD TO CART</a>
+          <button class="add-to-cart" data-isim= "${product.name}">ADD TO CART</button>
         </div>
       </div>
     </div>
