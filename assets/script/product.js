@@ -121,8 +121,8 @@ function renderOrders() {
         )
         .join("")}
     </ul>
-    <h3>Total $ ${orders.reduce((sum, item) => sum + item.price * item.quantity, 0)}</h3>
-    <button class="checkout-btn">CHECKOUT</button>
+    <h3>Total $ ${orders.reduce((sum, item) => sum + (item.price * item.quantity), 0)}</h3>
+    <a  href="#checkout" class="checkout-btn">CHECKOUT</a>
   `;
 
 
