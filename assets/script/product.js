@@ -27,9 +27,8 @@ export async function showProductDetails() {
   productContainer.innerHTML = `
     <a class="go-back-link" href="#">Go Back</a>
     <div class="product-detail-item">
-      <img class="product-img" src="${product.image.desktop}" alt="${
-    product.name
-  }">
+      <img class="product-img" src="${product.image.desktop}" alt="${product.name
+    }">
       <div class="product-detail-text">
         <h4>${product.isNew ? "NEW PRODUCT" : ""}</h4>
         <h3 class="product-detail-name" data-id= ${product.id}>${product.name}</h3>
@@ -41,24 +40,24 @@ export async function showProductDetails() {
             <p class="count">1</p> 
             <p class="plus-counter">+</p>
           </div>
-          <button class="add-to-cart" data-isim= "${
-            product.name
-          }" data-price= ${product.price} data-slug= ${
-    product.slug
-  } >ADD TO CART</button>
+          <button class="add-to-cart" data-isim= "${product.name
+    }" data-price= ${product.price} data-slug= ${product.slug
+    } >ADD TO CART</button>
         </div>
       </div>
     </div>
 
     <div class="product-features">
-      <h2 class="features-header">Features</h2>
-      <p class="features-text">${product.features}</p>
+      <div class = "product-features-content">
+        <h2 class="features-header">Features</h2>
+        <p class="features-text">${product.features}</p>
+      </div>
       <div class="in-the-box-content">
         <h2 class="in-the-box-header">IN THE BOX</h2>
         <div class="content-section">
           ${product.includes
-            .map((item) => `<p><span>${item.quantity}x</span> ${item.item}</p>`)
-            .join("")}
+      .map((item) => `<p><span>${item.quantity}x</span> ${item.item}</p>`)
+      .join("")}
         </div>
       </div>
     </div>
@@ -77,16 +76,16 @@ export async function showProductDetails() {
       <h2 class = "also-like-header">YOU MAY ALSO LIKE</h2>
       <div class="product-also-like-items">
         ${product.others
-          .map(
-            (other) => `
+      .map(
+        (other) => `
           <div class="product-also-like-item">
             <img src="${other.image.desktop}" alt="${other.name}">
             <h3>${other.name}</h3>
             <a class="see-product-button" href="#product-${other.slug}">See Product</a>
           </div>
         `
-          )
-          .join("")}
+      )
+      .join("")}
       </div>
     </div>
   `;
@@ -132,7 +131,7 @@ function handleAddButtons(e) {
     });
   }
 
-  
+
 
   console.log("Güncellenmiş Sepet:", orders);
   renderOrders();
@@ -181,7 +180,7 @@ function renderOrders() {
 
 function removeFromCard(e) {
   const productId = e.target.closest(".orderLi").querySelector(".orderTexts h6").textContent;
-  
+
   let product = orders.find(x => x.name === productId);
 
   if (product) {
@@ -199,12 +198,12 @@ function removeFromCard(e) {
 
 function increaseQuantity(e) {
   const productId = e.target.closest(".orderLi").querySelector(".orderTexts h6").textContent;
-  
+
   let product = orders.find(x => x.name === productId);
 
   if (product) {
-    product.quantity++; 
-    renderOrders(); 
+    product.quantity++;
+    renderOrders();
   }
 }
 
