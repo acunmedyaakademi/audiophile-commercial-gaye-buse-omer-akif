@@ -46,8 +46,10 @@ export async function showProductDetails() {
     </div>
 
     <div class="product-features">
-      <h2 class="features-header">Features</h2>
-      <p class="features-text">${product.features}</p>
+      <div class = "product-features-content">
+        <h2 class="features-header">Features</h2>
+        <p class="features-text">${product.features}</p>
+      </div>
       <div class="in-the-box-content">
         <h2 class="in-the-box-header">IN THE BOX güncel</h2>
         <div class="content-section">

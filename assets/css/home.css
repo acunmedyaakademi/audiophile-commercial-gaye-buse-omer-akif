@@ -13,6 +13,11 @@
   background-color: rgba(241, 241, 241, 1);
 } */
 
+.products {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;;
+}
 
 
 .products a {
@@ -93,6 +98,7 @@
 }
 
 .product-yx1-text {
+  margin-top: 24px;
   background-color:rgba(241, 241, 241, 1);
   padding-block: 41px;
   text-align: left;
