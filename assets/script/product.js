@@ -20,12 +20,10 @@ export async function showProductDetails() {
   }
 
   const slug = hash.replace("#product-", "");
-  console.log("Çıkarılan Slug:", slug);
+  console.log("Çıkarılan Slug:", slug); 
   const product = products.find(p => p.slug === slug);
 
-
   productContainer.innerHTML = '';
-
 
   productContainer.innerHTML = `
     <a class="go-back-link" href="#">Go Back</a>
