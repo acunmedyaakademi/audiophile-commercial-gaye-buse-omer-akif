@@ -125,3 +125,13 @@
 
 
 
+@media (width >= 768px) {
+  .homePage {
+    padding-inline: 40px;
+  }
+
+  .product-yx1 {
+    display: flex;
+  }
+
+}
