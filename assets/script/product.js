@@ -9,9 +9,9 @@ export async function showProductDetails() {
   }
 
   const products = await fetchData();
-console.log("Gelen Ürünler:", products);
+  console.log("Gelen Ürünler:", products);
 
-  
+
   const hash = window.location.hash;
   console.log("Mevcut Hash:", hash);
   if (!hash.startsWith("#product-")) {
@@ -19,12 +19,12 @@ console.log("Gelen Ürünler:", products);
     return;
   }
 
-  const slug = hash.replace("#product-", ""); 
-  console.log("Çıkarılan Slug:", slug); 
+  const slug = hash.replace("#product-", "");
+  console.log("Çıkarılan Slug:", slug);
   const product = products.find(p => p.slug === slug);
 
 
-    productContainer.innerHTML = '';
+  productContainer.innerHTML = '';
 
 
   productContainer.innerHTML = `
@@ -69,7 +69,7 @@ console.log("Gelen Ürünler:", products);
     </div>
 
     <div class="product-also-like">
-      <h2>YOU MAY ALSO LIKE</h2>
+      <h2 class = "also-like-header">YOU MAY ALSO LIKE</h2>
       <div class="product-also-like-items">
         ${product.others.map(other => `
           <div class="product-also-like-item">
