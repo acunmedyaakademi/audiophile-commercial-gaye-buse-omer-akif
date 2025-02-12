@@ -13,6 +13,8 @@
   background-color: rgba(241, 241, 241, 1);
 } */
 
+
+
 .products a {
   padding: 15px 30px;
   border: 1px solid black;
@@ -23,6 +25,14 @@
   background-color: rgba(216, 125, 74, 1);
   padding: 50px;
   text-align: center;
+}
+
+.product-zx9 img {
+  margin-inline: auto;
+}
+
+.product-zx7 img {
+  width: 100%;
 }
 
 .product-zx9 h2 {
@@ -84,7 +94,30 @@
 
 .product-yx1-text {
   background-color:rgba(241, 241, 241, 1);
-  padding: 40px;
-  margin-top: 20px;
+  padding-block: 41px;
+  text-align: left;
+  padding-left: 24px;
+}
+
+.product-yx1 img {
+  width: 100%;
+}
+
+.product-yx1-text h3 {
+  color: black;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 38.25px;
+  letter-spacing: 2px;
+  margin-bottom: 32px;
+}
+
+.product-yx1-text a {
+  color: black;
+  font-weight: 700;
+  font-size: 13px;
+  line-height: 17.76px;
+  letter-spacing: 1px;
+
 }
 
