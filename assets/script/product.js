@@ -40,7 +40,18 @@ export async function showProductDetails() {
             <p class="count">${productQuantity}</p>
             <button class="plus-counter">+</button>
           </div>
-          <button class="add-to-cart" data-isim="${product.name}" data-price="${product.price}" data-slug="${product.slug}">ADD TO CART</button>
+          <button class="add-to-cart" data-isim= "${product.name}">ADD TO CART</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-features">
+      <h2 class="features-header">Features</h2>
+      <p class="features-text">${product.features}</p>
+      <div class="in-the-box-content">
+        <h2 class="in-the-box-header">IN THE BOX güncel</h2>
+        <div class="content-section">
+          ${product.includes.map(item => `<p><span>${item.quantity}x</span> ${item.item}</p>`).join("")}
         </div>
       </div>
     </div>
