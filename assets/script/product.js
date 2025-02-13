@@ -1,6 +1,6 @@
 import { fetchData } from "./fetchData.js";
 
-let orders = []; 
+let orders = [];
 let productQuantity = 1; 
 
 export async function showProductDetails() {
@@ -115,12 +115,15 @@ function renderOrders() {
       <h2>CART (<span id="cart-count">${orders.length}</span>)</h2>
       <a href="#" class="remove-all">Remove all</a>
     </div>
-    <ul>
-      ${orders.map((x) => `
-        <li class="orderLi">
-          <div class="orderProductInfo">
-            <img class="orderProductImg" src='assets/cart/image-${x.slug}.jpg' alt="">
-            <div class="orderTexts">
+
+    <ul class="cart-items">
+      ${orders
+        .map(
+          (x) => `
+        <li class="order-item">
+          <div class="order-product-info">
+            <img class="order-product-img" src="assets/cart/image-${x.slug}.jpg" alt="${x.name}">
+            <div class="order-texts">
               <h6>${x.name}</h6>
               <span class="orderPrice">$${x.price}</span>     
             </div>
@@ -131,7 +134,9 @@ function renderOrders() {
             <button class="order-plus-counter">+</button>
           </div>
         </li>
-      `).join("")}
+      `
+        )
+        .join("")}
     </ul>
     <div class="cart-total">
       <h3>TOTAL: <span>$ ${orders.reduce((sum, item) => sum + item.price * item.quantity, 0)}</span></h3>

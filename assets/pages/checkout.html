@@ -3,58 +3,111 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="assets/css/checkout.css">
   <title>Checkout Page</title>
 </head>
 <body>
   <div class="container-checkout">
-    <div class="product-detail">
+    <div class="go-back-btn">
       <a href="#home">Go Back</a>
-      <div class="section-checkout">
-        <h2>Checkout</h2>
-        <div class="billing-details">
-          <h3>Name</h3>
-          <input type="text">
-          <h3>Email Address</h3>
-          <input type="email">
-          <h3>h3hone Number</p>
-          <input type="number">
-        </div>
-        <div class="shipping-info">
-          <h3>Address</h3>
-          <input type="text">
-          <h3>Zip Code</h3>
-          <input type="number">
-          <h3>City</h3>
-          <input type="text">
-          <h3>Country</h3>
-          <input type="text">
-        </div>
-        <div class="payment-details">
-          <h3>Payment Method</h3>
-          <label><input type="checkbox" name="" id="">e-Moneye</label>
-          <label><input type="checkbox" name="" id="">Cash on Delivery</label>
-          <h3>e-Money Number</h3>
-          <input type="number">
-          <h3>e-Money Pin</h3>
-          <input type="number">
+    </div>
+    <div class="checkout-desktop">
+      <div class="checkout-inner">
+        <div class="section-checkout">
+          <h1>CHECKOUT</h1>
+          <div class="billing-details">
+            <h2>BILLING DETAILS</h2>
+            <div class="billing-details-info">
+              <div class="name-input">
+                <h3>Name</h3>
+                <input type="text" placeholder="Alexei Ward">
+              </div>
+              <div class="e-mail-input">
+                <h3>Email Address</h3>
+                <input type="email" placeholder="alexei@mail.com">
+              </div>
+              <div class="number-input">
+                <h3>Phone Number</h3>
+                <input type="number" placeholder="+1 202-555-0136">
+              </div>
+            </div>
+          </div>
+          <div class="shipping-info">
+            <h2>SHIPPING INFO</h2>
+            <div class="shipping-info-inputs">
+              <div class="adress-input">
+                <h3>Your Address</h3>
+                <input type="text" placeholder="1137 Williams Avenue">
+              </div>
+              <div class="zip-code-input">
+                <h3>ZIP Code</h3>
+                <input type="number" placeholder="10001">
+              </div>
+              <div class="city-input">
+                <h3>City</h3>
+                <input type="text" placeholder="New York">
+              </div>
+              <div class="country-input">
+                <h3>Country</h3>
+                <input type="text" placeholder="United States">
+              </div>
+            </div>
+          </div>
+          <div class="payment-details">
+            <h2>PAYMENT DETAILS</h2>
+            <div class="payment-details-info">
+              <h3>Payment Method</h3>
+              <label><input type="checkbox" name="" id="">e-Money</label>
+              <label><input type="checkbox" name="" id="">Cash on Delivery</label>
+              <div class="e-money">
+                <div class="e-money-number">
+                  <h3>e-Money Number</h3>
+                  <input type="number" placeholder="238521993">
+                </div>
+                <div class="e-money-pin">
+                  <h3>e-Money Pin</h3>
+                  <input type="number" placeholder="6891">
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <div class="checkout-summary">
-        <div class="checkout-item">
-          <img src="" alt="">
-          <div class="checkout-product-detail">
+      <h2>SUMMARY</h2>
+      <div class="checkout-item">
+        <img src="" alt="">
+        <div class="checkout-product-detail">
+          <div class="product-info">
             <h3>XX99 MK II</h3>
             <p>$ 2,999</p>
           </div>
           <p>x1</p>
         </div>
-        <p>Total : </p>
-        <p>Shipping : </p>
-        <p>VAT (included) : </p>
-        <p>Grand Total : </p>
-        <a href="#">Continue & Pay</a>
+      </div>
+      <div class="checkout-footer">
+        <div class="checkout-info">
+          <div class="price-box">
+            <p>TOTAL</p>
+            <span>$ 100</span>
+          </div>
+          <div class="price-box">
+            <p>SHIPPING</p>
+            <span>$ 100</span>
+          </div>
+          <div class="price-box">
+            <p>VAT (INCLUDED)</p>
+            <span>$ 100</span>
+          </div>
+        </div>
+        <div class="grand-total">
+          <p>GRAND TOTAL</p>
+          <span>$ 100</span>
+        </div>
+      </div>
+      <a href="#">CONTINUE & PAY</a>
       </div>
     </div>
-  </div>
+</div>
 </body>
 </html>
