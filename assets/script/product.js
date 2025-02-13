@@ -1,6 +1,6 @@
 import { fetchData } from "./fetchData.js";
 
-let orders = [];
+let orders = []; 
 let productQuantity = 1; 
 
 export async function showProductDetails() {
@@ -88,27 +88,41 @@ function addToCart(e) {
   document.querySelector(".count").innerText = productQuantity;
 }
 
-
 function renderOrders() {
   const cartContainer = document.querySelector(".cart-container");
 
+  if (!cartContainer) {
+    console.error("HATA: `.cart-container` elementi bulunamadı!");
+    return;
+  }
+
+  console.log("Sepetteki ürün sayısı:", orders.length);
+
+  if (orders.length === 0) {
+    cartContainer.innerHTML = `
+      <div class="cart-empty">
+        <h2>CART (<span id="cart-count">0</span>)</h2>
+        <p>Your Cart is empty.</p>
+        <p>Continue shopping on the <a href="#">homepage</a>.</p>
+        <h3>Total: $ 0</h3>
+      </div>
+    `;
+    return;
+  }
+
   cartContainer.innerHTML = `
-  <div class="cart-container-inner">
     <div class="dialog-header">
       <h2>CART (<span id="cart-count">${orders.length}</span>)</h2>
       <a href="#" class="remove-all">Remove all</a>
     </div>
-
-    <ul class="cart-items">
-      ${orders
-        .map(
-          (x) => `
-        <li class="order-item">
-          <div class="order-product-info">
-            <img class="order-product-img" src="assets/cart/image-${x.slug}.jpg" alt="${x.name}">
-            <div class="order-texts">
+    <ul>
+      ${orders.map((x) => `
+        <li class="orderLi">
+          <div class="orderProductInfo">
+            <img class="orderProductImg" src='assets/cart/image-${x.slug}.jpg' alt="">
+            <div class="orderTexts">
               <h6>${x.name}</h6>
-              <span class="order-price">$${x.price}</span>     
+              <span class="orderPrice">$${x.price}</span>     
             </div>
           </div>
           <div class="order-product-counter">
@@ -117,19 +131,13 @@ function renderOrders() {
             <button class="order-plus-counter">+</button>
           </div>
         </li>
-      `
-        )
-        .join("")}
+      `).join("")}
     </ul>
-
     <div class="cart-total">
-      <h3>Total: <span class="total-price">$${orders.reduce((sum, item) => sum + item.price * item.quantity, 0)}</span></h3>
+      <h3>TOTAL: <span>$ ${orders.reduce((sum, item) => sum + item.price * item.quantity, 0)}</span></h3>
     </div>
-
-    <a href= "#checkout" class="checkout-btn">CHECKOUT</a>
-  </div>
-`;
-
+    <a href="#checkout" class="checkout-btn">CHECKOUT</a>
+  `;
 
   document.querySelectorAll(".order-minus-counter").forEach((btn) => {
     btn.addEventListener("click", removeFromCart);
@@ -138,9 +146,9 @@ function renderOrders() {
   document.querySelectorAll(".order-plus-counter").forEach((btn) => {
     btn.addEventListener("click", increaseQuantity);
   });
-
-  updateProductDetails();
 }
+
+
 
 function increaseQuantity(e) {
   const productName = e.target.closest(".orderLi").querySelector(".orderTexts h6").textContent;
@@ -166,19 +174,7 @@ function removeFromCart(e) {
   }
 }
 
-function updateProductDetails() {
-  const productName = document.querySelector(".product-detail-name").textContent;
-  const countElement = document.querySelector(".count");
-
-  let product = orders.find((x) => x.name === productName);
-
-  if (product) {
-    countElement.innerText = product.quantity;
-  } else {
-    countElement.innerText = 1;
-  }
-}
-
 document.addEventListener("DOMContentLoaded", () => {
   showProductDetails();
+  renderOrders();
 });

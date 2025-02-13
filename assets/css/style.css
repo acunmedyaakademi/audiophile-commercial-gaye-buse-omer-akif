@@ -207,14 +207,13 @@ dialog {
     gap: 24px;
   }
 
-  .order-item {
+  .orderLi {
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
 
-  .order-product-info {
-
+  .orderProductInfo {
     display: flex;
     align-items: center;
     gap: 16px;
@@ -263,24 +262,9 @@ dialog {
   .order-plus-counter {
     padding-inline: 8px;
 
-    h6 {
-      font-family: Manrope;
-      font-weight: 700;
-      font-size: 15px;
-      line-height: 25px;
-      letter-spacing: 0px;
-      color: #000000;
-    }
-
-    span {
-      font-family: Manrope;
-      font-weight: 700;
-      font-size: 14px;
-      line-height: 25px;
-      letter-spacing: 0px;
-      color: rgba(0, 0, 0, 0.5);
-    }
+   
   }
+
 
   .order-product-counter {
     display: flex;
