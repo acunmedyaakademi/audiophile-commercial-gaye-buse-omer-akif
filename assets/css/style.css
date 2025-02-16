@@ -24,12 +24,31 @@
   font-weight: bolder;
 }
 
-.footer p {
+.footer-info {
   color: rgba(255, 255, 255, 0.5);
   font-weight: 400;
   font-size: 15px;
   line-height: 25px;
   margin-block: 48px;
+  max-width: 1110px;
+  margin-inline: auto;
+  text-align: start;
+}
+
+.footer-copyright {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1110px;
+  margin-inline: auto;
+}
+
+.footer-copyright p {
+  font-family: Manrope;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 25px;
+  letter-spacing: 0px;
+  color: rgba(255, 255, 255, 0.5);
 }
 
 .social-media {
@@ -42,7 +61,7 @@
 /* header stil kodları */
 
 .header {
-  background-color: #000000;
+  background-color: #1a1a1a;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -55,6 +74,8 @@
   padding: 38px 24px;
   z-index: 10;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  max-width: 1110px;
+  margin-inline: 50px;
 }
 
 .navbar,
@@ -62,6 +83,26 @@
   display: none;
   flex-direction: column;
   width: 100%;
+}
+
+.navbarFooter {
+  max-width: 1110px;
+  margin-inline: auto;
+}
+
+.navbarFooter ul {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.navbarFooter li a {
+  font-family: Manrope;
+  font-weight: 700;
+  font-size: 13px;
+  line-height: 25px;
+  letter-spacing: 2px;
+  color: white;
 }
 
 /* .menuCategoriesMobil ul {
@@ -98,7 +139,7 @@
 
     img {
       position: absolute;
-      transform: translate(-50%, -50%);
+      transform: translate(-50%, -20%);
       left: 50%;
       backdrop-filter: blur(43.49250793457031px);
     }
@@ -144,6 +185,7 @@
   height: 102px;
   text-align: center;
   align-content: center;
+  margin-bottom: 120px;
 }
 
 .page-title h1 {
@@ -157,7 +199,6 @@
 
 .orderLi {
   list-style: none;
-
 }
 
 dialog {
@@ -258,68 +299,64 @@ dialog {
   justify-content: center;
 }
 
-  .order-minus-counter,
-  .order-plus-counter {
-    padding-inline: 8px;
+.order-minus-counter,
+.order-plus-counter {
+  padding-inline: 8px;
+}
 
-   
-  }
+.order-product-counter {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background-color: #f1f1f1;
+  height: 32px;
+  padding: 7px;
 
-
-  .order-product-counter {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    background-color: #f1f1f1;
-    height: 32px;
-    padding: 7px;
-
-    button {
-      padding-inline: 5px;
-      border: none;
-      background-color: transparent;
-    }
-  }
-
-  .cart-total {
-    margin-top: 32px;
-    margin-bottom: 24px;
-    h3 {
-      display: flex;
-      justify-content: space-between;
-      font-family: Manrope;
-      font-weight: 400;
-      font-size: 15px;
-      line-height: 25px;
-      letter-spacing: 0px;
-      color: rgba(0, 0, 0, 0.5);
-
-      span {
-        font-weight: 700;
-        font-size: 18px;
-        line-height: 24.59px;
-        color: #000000;
-      }
-    }
-  }
-
-  .checkout-btn {
-    display: flex;
-    width: 100%;
-    justify-content: center;
-    padding: 15px;
-    background-color: #d87d4a;
+  button {
+    padding-inline: 5px;
     border: none;
+    background-color: transparent;
+  }
+}
+
+.cart-total {
+  margin-top: 32px;
+  margin-bottom: 24px;
+  h3 {
+    display: flex;
+    justify-content: space-between;
     font-family: Manrope;
-    font-weight: 700;
-    font-size: 13px;
-    line-height: 17.76px;
-    letter-spacing: 1px;
-    text-align: center;
-    color: white;
-    border: none;
-  }
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 25px;
+    letter-spacing: 0px;
+    color: rgba(0, 0, 0, 0.5);
 
+    span {
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 24.59px;
+      color: #000000;
+    }
+  }
+}
+
+.checkout-btn {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  padding: 15px;
+  background-color: #d87d4a;
+  border: none;
+  font-family: Manrope;
+  font-weight: 700;
+  font-size: 13px;
+  line-height: 17.76px;
+  letter-spacing: 1px;
+  text-align: center;
+  color: white;
+  border: none;
+}
 
 @media (width >= 768px) {
   .navbar,
@@ -327,9 +364,25 @@ dialog {
     flex-direction: row;
   }
 
+  .desktopHeader .navbar ul li:hover a {
+    color: #d87d4a;
+  }
+
+  .companyLogo {
+    text-align: start;
+  }
+
+  .navbarFooter ul {
+    flex-direction: row;
+    gap: 34px;
+  }
 }
 
 @media (width >= 768px) {
+  .desktopHeader {
+    padding-inline: 45px;
+  }
+
   .navbar,
   .menuCategoriesMobil {
     flex-direction: row;
@@ -342,6 +395,7 @@ dialog {
 
   .page-title {
     height: 246px;
+    margin-bottom: 160px;
   }
 
   .page-title h1 {
@@ -369,10 +423,10 @@ dialog {
 @media (width >= 1110px) {
   .desktopHeader {
     width: 100%;
-    max-width: 1110px;
+    max-width: 1170px;
     margin-inline: auto;
     align-items: center;
-    padding-inline: 0px;
+    padding-inline: 30px;
 
     .navbar {
       display: flex;

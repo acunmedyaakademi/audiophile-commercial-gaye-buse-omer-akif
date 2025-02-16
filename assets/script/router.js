@@ -8,7 +8,7 @@ const routes = {
   "#checkout": "assets/pages/checkout.html",
 };
 
-async function router() {
+export default async function router() {
   console.log("🔄 Router çalıştı. Mevcut hash:", window.location.hash);
 
   const pageContainer = document.getElementById("page");
@@ -20,14 +20,14 @@ async function router() {
 
   let hash = window.location.hash;
   
-  // **Eğer hash boşsa veya bilinmeyen bir hash ise `#home` kullan**
-  if (!hash || !routes[hash]) {
+  if (!hash || (!routes[hash] && !hash.startsWith("#product-"))) {
     if (hash !== "#home") {
       console.warn("⚠️ Geçersiz veya boş hash, #home'a yönlendiriliyor...");
       window.location.hash = "#home"; 
-      return; // Sonsuz döngüyü önlemek için burada duruyoruz.
+      return;
     }
   }
+
 
   console.log("🌍 Güncellenen hash:", hash);
 
@@ -87,10 +87,10 @@ function updatePageTitle() {
 
   if (!pageTitle) return;
 
-  const hash = window.location.hash.replace("#", "");
+  let hash = window.location.hash.replace("#", ""); // "#" işaretini kaldır
 
-  if (hash.startsWith("product-")) {
-    pageTitle.style.display = "none";
+  if (hash.startsWith("product-")) {  // Doğru kontrol
+    pageTitle.style.display = "none"; // Ürün detay sayfasında başlık gizlensin
   } else if (hash && hash !== "home") {
     const formattedTitle = hash.toUpperCase();
     pageTitle.innerHTML = `<h1>${formattedTitle}</h1>`;
@@ -99,17 +99,6 @@ function updatePageTitle() {
     pageTitle.style.display = "none";
   }
 }
-
-document.querySelectorAll(".shop").forEach(link => {
-  link.addEventListener("click", (e) => {
-    e.preventDefault(); 
-    const targetHash = e.target.getAttribute("href");
-
-    console.log(`🔗 Kategoriye tıklandı: ${targetHash}`);
-    window.location.hash = targetHash; 
-    router(); 
-  });
-});
 
 
 // ✅ Sayfa başlığı değiştiğinde güncelle

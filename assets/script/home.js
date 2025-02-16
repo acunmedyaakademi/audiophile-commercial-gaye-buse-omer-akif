@@ -1,9 +1,9 @@
 import { fetchData } from "./fetchData.js"; 
-
-
+import router from "./router.js"; 
 
 async function listCategories() {
   const products = await fetchData(); 
+  console.log(products);
   const categories = [...new Set(products.map(product => product.category))]; 
 
   const categoryLists = document.querySelectorAll(".categories");
@@ -33,12 +33,23 @@ async function listCategories() {
           `<div class="category-item">
             <img src="./assets/shared/mobile/image-category-thumbnail-${category}-menu.png" alt="${categoryName} Img">
             <h3>${categoryName}</h3>
-            <a href="#">Shop</a>
+            <a href="#${category.toLowerCase()}" class="shop">Shop</a>
           </div>`;
       });
 
       console.log("✅ Kategoriler başarıyla eklendi.");
     }, 1000); 
+  });
+
+  document.addEventListener("click", (e) => {
+    if (e.target.matches(".shop")) {
+      e.preventDefault();
+      const targetHash = e.target.getAttribute("href");
+  
+      console.log(`🔗 Kategoriye tıklandı: ${targetHash}`);
+      window.location.hash = targetHash;
+      router();
+    }
   });
 }
 

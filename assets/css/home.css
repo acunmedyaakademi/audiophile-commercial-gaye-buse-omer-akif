@@ -1,7 +1,3 @@
-.homePage {
- padding: 16px;
-}
-
 /* .categories {
   display: flex;
   align-items: center;
@@ -13,12 +9,15 @@
   background-color: rgba(241, 241, 241, 1);
 } */
 
+.categories {
+  margin-inline: 24px;
+}
+
 .products {
   display: flex;
   flex-direction: column;
-  gap: 24px;;
+  gap: 24px;
 }
-
 
 .products a {
   padding: 15px 30px;
@@ -30,6 +29,8 @@
   background-color: rgba(216, 125, 74, 1);
   padding: 50px;
   text-align: center;
+  margin-inline: 24px;
+  border-radius: 8px;
 }
 
 .product-zx9 img {
@@ -56,7 +57,6 @@
   line-height: 25px;
   letter-spacing: 0px;
   margin-block: 24px;
-  
 }
 
 .product-zx9 a {
@@ -66,12 +66,16 @@
   font-size: 13px;
   line-height: 17.76px;
   letter-spacing: 1px;
-
 }
 
 .product-zx7 {
   position: relative;
   z-index: 0;
+  margin-inline: 24px;
+
+  img {
+    border-radius: 8px;
+  }
 }
 
 .product-zx7 h2 {
@@ -86,7 +90,6 @@
 .product-zx7 a {
   color: black;
   background-color: transparent;
-  
 }
 
 .product-zx7-text {
@@ -94,19 +97,25 @@
   top: 80px;
   left: 24px;
   z-index: 1;
-  padding: 10px; 
+  padding: 10px;
 }
 
 .product-yx1-text {
   margin-top: 24px;
-  background-color:rgba(241, 241, 241, 1);
+  background-color: rgba(241, 241, 241, 1);
   padding-block: 41px;
   text-align: left;
   padding-left: 24px;
+  border-radius: 8px;
+}
+
+.product-yx1 {
+  margin-inline: 24px;
 }
 
 .product-yx1 img {
   width: 100%;
+  border-radius: 8px;
 }
 
 .product-yx1-text h3 {
@@ -124,20 +133,284 @@
   font-size: 13px;
   line-height: 17.76px;
   letter-spacing: 1px;
-
 }
 
 /* dialog */
 
+.headerMenuAndTitle {
+  display: flex;
+  align-items: center;
 
+  width: 100%;
+
+  a {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.hero {
+  position: relative;
+  width: 100%;
+  height: auto;
+  min-height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: #1a1a1a;
+}
+
+/* Hero içindeki resim */
+.hero-img-mobil {
+  width: 100%; /* 📌 Görsel genişliği */
+  opacity: 0.58; /* 📌 Görselin saydamlığını ayarla */
+  position: absolute;
+  max-height: 510px;
+  top: -70px;
+  z-index: 1;
+  height: auto;
+  aspect-ratio: 2 / 3;
+  object-fit: contain;
+}
+
+/* Hero içeriği */
+.hero-text {
+  position: absolute;
+  top: 108px;
+  z-index: 2;
+  color: white;
+  text-align: center;
+  max-width: 328px;
+  font-family: Manrope;
+
+  .new-product {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 19.12px;
+    letter-spacing: 10px;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 16px;
+  }
+
+  .title {
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 40px;
+    letter-spacing: 1.29px;
+    text-align: center;
+    color: white;
+    margin-bottom: 24px;
+  }
+
+  .description {
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 25px;
+    letter-spacing: 0px;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.75);
+    margin-bottom: 24px;
+  }
+
+  a {
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 17.76px;
+    letter-spacing: 1px;
+    color: white;
+    background-color: #d87d4a;
+    padding: 15px 30px;
+  }
+}
+
+.hero-img-tablet,
+.hero-img-desktop {
+  display: none;
+}
+
+.hero-inner {
+  justify-content: center;
+  display: flex;
+}
 
 @media (width >= 768px) {
-  .homePage {
-    padding-inline: 40px;
+  .product-yx1 {
+    display: flex;
+    gap: 11px;
+
+    .product-yx1-text {
+      width: 100%;
+      margin-top: 0;
+    }
+  }
+
+  .headerMenuAndTitle {
+    width: auto;
+    gap: 40px;
+  }
+
+  .hero {
+    max-height: 800px;
+  }
+
+  .hero-img-mobil {
+    display: none;
+  }
+
+  .hero-img-tablet {
+    width: 100%; /* 📌 Görsel genişliği */
+    opacity: 0.58; /* 📌 Görselin saydamlığını ayarla */
+    position: absolute;
+    left: 0;
+    top: -50px;
+    z-index: 1;
+    height: auto;
+    aspect-ratio: 76 / 96;
+    object-fit: contain;
+    display: block;
+    max-height: 800px;
+  }
+
+  .hero {
+    align-items: flex-start;
+    min-height: 840px;
+  }
+
+  .hero-text {
+    top: 216px;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-self: anchor-center;
+    max-width: 398px;
+
+    .title {
+      font-size: 56px;
+      line-height: 58px;
+      letter-spacing: 2px;
+    }
+
+    a {
+      width: 45%;
+      margin-inline: auto;
+    }
+
+    a:hover {
+      background-color: #fbaf85;
+    }
+  }
+
+  .navbarFooter ul li a:hover {
+    color: #D87D4A;
+  }
+
+  .content-text {
+    margin-inline: 40px;
+  }
+
+  .categories {
+    margin-inline: 40px;
+  }
+
+  .product-zx9 {
+    margin-inline: 40px;
+  }
+
+  .product-zx7 {
+    margin-inline: 40px;
   }
 
   .product-yx1 {
-    display: flex;
+    margin-inline: 40px;
   }
 
+  .footerNavigationBar {
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+  }
+
+  .navbarFooter {
+    margin-inline: 0;
+  }
+}
+
+@media (width >= 1110px) {
+  .hero-img-tablet {
+    display: none;
+  }
+
+  .hero-img-desktop {
+    display: block;
+    width: 100%;
+    position: relative;
+    margin-top: -50px;
+    object-fit: cover;
+  }
+
+  .hero {
+    justify-content: start;
+    min-height: auto;
+  }
+
+  .hero-inner {
+    max-width: 1200px;
+    margin-inline: auto;
+    padding-inline: 45px;
+    display: block;
+  }
+
+  .hero-text {
+    width: 100%;
+    text-align: start;
+    top: 128px;
+    justify-self: start;
+
+    .new-product {
+      text-align: start;
+    }
+
+    .title {
+      text-align: start;
+    }
+
+    .description {
+      text-align: start;
+    }
+
+    a {
+      margin-inline: 0;
+      text-align: center;
+    }
+  }
+
+  .categories {
+    margin-top: 200px;
+    margin-inline: auto;
+  }
+
+  .product-zx9,
+  .product-zx7,
+  .product-yx1 {
+    margin-inline: auto;
+    max-width: 1110px;
+    width: 100%;
+  }
+
+  .footerNavigationBar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    max-width: 1110px;
+    margin-inline: auto;
+  }
+
+  .footer-copyright {
+    max-width: 1110px;
+    margin-inline: auto;
+  }
 }

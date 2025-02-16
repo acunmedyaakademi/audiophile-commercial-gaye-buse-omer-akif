@@ -25,30 +25,24 @@ export async function showProductDetails() {
   console.log("Çıkarılan Slug:", slug);
   const product = products.find((p) => p.slug === slug);
 
+  if (!product) {
+    console.error("⚠️ Ürün bulunamadı!");
+    productContainer.innerHTML = `<p class="error-message">Ürün bulunamadı.</p>`;
+    return;
+  }
+
   productContainer.innerHTML = `
     <a class="go-back-link" href="#">Go Back</a>
     <div class="product-detail-item">
       <img class="product-img" src="${product.image.desktop}" alt="${product.name}">
       <div class="product-detail-text">
         <h4>${product.isNew ? "NEW PRODUCT" : ""}</h4>
-        <h3 class="product-detail-name" data-id="${product.id}">${product.name}</h3>
+        <h3 class="product-detail-name">${product.name}</h3>
         <p class="product-detail-info">${product.description}</p>
         <h3 class="product-detail-price">$ ${product.price}</h3>
-        <div class="product-count-area">
-          <div class="product-counter">
-            <button class="minus-counter">-</button>
-            <p class="count">${productQuantity}</p>
-            <button class="plus-counter">+</button>
-          </div>
-          <button class="add-to-cart" data-isim="${product.name}" data-price="${product.price}" data-slug="${product.slug}">ADD TO CART</button>
-        </div>
       </div>
     </div>
   `;
-
-  document.querySelector(".plus-counter").addEventListener("click", increaseDetailQuantity);
-  document.querySelector(".minus-counter").addEventListener("click", decreaseDetailQuantity);
-  document.querySelector(".add-to-cart").addEventListener("click", addToCart);
 }
 
 function increaseDetailQuantity() {
