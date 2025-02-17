@@ -1,7 +1,7 @@
 import { fetchData } from "./fetchData.js";
 
 let orders = [];
-let productQuantity = 1; 
+let productQuantity = 1;
 
 export async function showProductDetails() {
   const productContainer = document.querySelector(".product-detail");
@@ -98,8 +98,8 @@ function renderOrders() {
     <hr />
     <ul>
       ${orders
-        .map(
-          (x) => `
+      .map(
+        (x) => `
         <li class="orderLi">
           <div class="orderProductInfo">
             <img class="orderProductImg" src='assets/cart/image-${x.slug}.jpg' alt="">
@@ -115,11 +115,11 @@ function renderOrders() {
           </div>
         </li>
       `
-        )
-        .join("")}
+      )
+      .join("")}
     </ul>
     <h3>Total $ ${orders.reduce((sum, item) => sum + item.price * item.quantity, 0)}</h3>
-    <button class="checkout-btn">CHECKOUT</button>
+    <a href="#checkout" class="checkout-btn">CHECKOUT</a>
   `;
 
   document.querySelectorAll(".order-minus-counter").forEach((btn) => {
