@@ -216,7 +216,7 @@ dialog {
     justify-content: space-between;
     margin-bottom: 31px;
 
-    a {
+    button {
       font-family: Manrope;
       font-weight: 400;
       font-size: 15px;
@@ -226,6 +226,8 @@ dialog {
       text-decoration-style: solid;
       text-decoration-thickness: Auto;
       color: rgba(0, 0, 0, 0.5);
+      background-color: transparent;
+      border: none;
     }
 
     h2 {
