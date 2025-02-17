@@ -92,11 +92,24 @@ function addToCart(e) {
 function renderOrders() {
   const cartContainer = document.querySelector(".cart-container");
 
+  if (orders.length === 0) {
+    cartContainer.innerHTML = `
+      <div class="cart-empty">
+        <h2>CART (<span id="cart-count">0</span>)</h2>
+        <p>Your Cart is empty.</p>
+        <p>Continue shopping on the <a href="#">homepage</a>.</p>
+        <h3>Total: $ 0</h3>
+      </div>
+    `;
+    return;
+  }
+
   cartContainer.innerHTML = `
-    <h2>CART (<span id="cart-count">${orders.length}</span>)</h2>
-    <a href="#">Remove all</a>
-    <hr />
-    <ul>
+    <div class="dialog-header">
+      <h2>CART (<span id="cart-count">${orders.length}</span>)</h2>
+      <button id="remove-all">Remove all</button>
+    </div>
+    <ul class="cart-items">
       ${orders
       .map(
         (x) => `
@@ -118,9 +131,16 @@ function renderOrders() {
       )
       .join("")}
     </ul>
-    <h3>Total $ ${orders.reduce((sum, item) => sum + item.price * item.quantity, 0)}</h3>
-    <a href="#checkout" class="checkout-btn">CHECKOUT</a>
+    <div class="cart-total">
+        <h3>TOTAL <span>$ ${orders.reduce((sum, item) => sum + item.price * item.quantity, 0)}</span></h3>
+    </div>
+    <button class="checkout-btn">CHECKOUT</button>
   `;
+
+  document.getElementById("remove-all").addEventListener("click", () => {
+    orders = [];
+    renderOrders(); 
+  });
 
   document.querySelectorAll(".order-minus-counter").forEach((btn) => {
     btn.addEventListener("click", removeFromCart);
