@@ -134,12 +134,13 @@ function renderOrders() {
     <div class="cart-total">
         <h3>TOTAL <span>$ ${orders.reduce((sum, item) => sum + item.price * item.quantity, 0)}</span></h3>
     </div>
-    <button class="checkout-btn">CHECKOUT</button>
+   <a href="#checkout"><button class="checkout-btn">CHECKOUT</button></a>
   `;
 
   document.getElementById("remove-all").addEventListener("click", () => {
     orders = [];
     renderOrders(); 
+
   });
 
   document.querySelectorAll(".order-minus-counter").forEach((btn) => {
