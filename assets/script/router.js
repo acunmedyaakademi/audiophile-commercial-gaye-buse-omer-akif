@@ -12,6 +12,8 @@ export default async function router() {
   console.log("🔄 Router çalıştı. Mevcut hash:", window.location.hash);
 
   const pageContainer = document.getElementById("page");
+  const pageTitle = document.querySelector(".page-title"); 
+  const mainContent = document.querySelector(".main-content"); 
 
   if (!pageContainer) {
     console.error("HATA: #page elementi bulunamadı!");
@@ -28,8 +30,15 @@ export default async function router() {
     }
   }
 
+ window.scrollTo(0, 0);
 
-  console.log("🌍 Güncellenen hash:", hash);
+ if (hash === "#checkout") {
+  pageTitle.style.display = "none";
+  mainContent.style.display = "none";
+} else {
+  pageContainer.style.display = "block";
+  updatePageTitle(); // Sayfa başlığını güncelle
+}
 
   if (hash.startsWith("#product-")) {
     console.log("🛍 Ürün detay sayfası açılıyor...");
@@ -91,7 +100,7 @@ function updatePageTitle() {
 
   if (hash.startsWith("product-")) {  // Doğru kontrol
     pageTitle.style.display = "none"; // Ürün detay sayfasında başlık gizlensin
-  } else if (hash && hash !== "home") {
+  } else if (hash && hash !== "home" && hash !== "checkout") {
     const formattedTitle = hash.toUpperCase();
     pageTitle.innerHTML = `<h1>${formattedTitle}</h1>`;
     pageTitle.style.display = "block";

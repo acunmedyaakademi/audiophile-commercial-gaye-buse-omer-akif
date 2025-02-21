@@ -67,6 +67,20 @@
   justify-content: space-between;
 }
 
+.headerMenuAndTitle {
+  display: flex;
+  align-items: center;
+  width: 100%;
+
+  a {
+    display: flex;
+margin-inline: auto;  }
+}
+
+.cartIcon {
+  width: 100%;
+}
+
 .desktopHeader {
   display: flex;
   justify-content: space-between;
@@ -471,5 +485,16 @@ dialog {
     margin-inline-end: auto;
     margin-right: 165px;
     max-width: 377px;
+  }
+
+  .headerMenuAndTitle {
+    display: flex;
+    align-items: center;
+    width: 100%;
+  
+    a {
+      display: flex;
+  margin-inline: 0; 
+}
   }
 }
