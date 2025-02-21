@@ -21,24 +21,24 @@ export default async function router() {
   }
 
   let hash = window.location.hash;
-  
+
   if (!hash || (!routes[hash] && !hash.startsWith("#product-"))) {
     if (hash !== "#home") {
       console.warn("⚠️ Geçersiz veya boş hash, #home'a yönlendiriliyor...");
-      window.location.hash = "#home"; 
+      window.location.hash = "#home";
       return;
     }
   }
 
- window.scrollTo(0, 0);
+  window.scrollTo(0, 0);
 
- if (hash === "#checkout") {
-  pageTitle.style.display = "none";
-  mainContent.style.display = "none";
-} else {
-  pageContainer.style.display = "block";
-  updatePageTitle(); // Sayfa başlığını güncelle
-}
+  if (hash === "#checkout") {
+   pageTitle.style.display = "none";
+   mainContent.style.display = "none";
+ } else {
+   pageContainer.style.display = "block";
+   updatePageTitle(); // Sayfa başlığını güncelle
+ }
 
   if (hash.startsWith("#product-")) {
     console.log("🛍 Ürün detay sayfası açılıyor...");
