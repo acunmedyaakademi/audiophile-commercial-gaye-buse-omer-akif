@@ -164,8 +164,8 @@
 
 /* Hero içindeki resim */
 .hero-img-mobil {
-  width: 100%; /* 📌 Görsel genişliği */
-  opacity: 0.58; /* 📌 Görselin saydamlığını ayarla */
+  width: 100%;
+  opacity: 0.58;
   position: absolute;
   max-height: 510px;
   top: -70px;
@@ -236,6 +236,10 @@
   display: flex;
 }
 
+.category-item a:hover {
+  color: rgba(216, 125, 74, 1);
+}
+
 @media (width >= 768px) {
   .product-yx1 {
     display: flex;
@@ -261,8 +265,8 @@
   }
 
   .hero-img-tablet {
-    width: 100%; /* 📌 Görsel genişliği */
-    opacity: 0.58; /* 📌 Görselin saydamlığını ayarla */
+    width: 100%;
+    opacity: 0.58;
     position: absolute;
     left: 0;
     top: -50px;
@@ -391,10 +395,6 @@
   .categories {
     margin-top: 200px;
     margin-inline: auto;
-  }
-
-  .category-item a:hover {
-    color: rgba(216, 125, 74, 1);
   }
 
   .product-zx9-text {

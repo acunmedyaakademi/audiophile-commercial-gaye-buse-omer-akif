@@ -105,6 +105,10 @@
       letter-spacing: 1px;
       color: #7d7d7d;
     }
+
+    a:hover {
+      color: rgba(216, 125, 74, 1);
+    }
   }
 
   .category-item:nth-child(1) {
