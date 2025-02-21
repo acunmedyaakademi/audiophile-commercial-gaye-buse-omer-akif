@@ -1,10 +1,10 @@
-import { fetchData } from "./fetchData.js"; 
-import router from "./router.js"; 
+import { fetchData } from "./fetchData.js";
+import router from "./router.js";
 
 async function listCategories() {
-  const products = await fetchData(); 
+  const products = await fetchData();
   console.log(products);
-  const categories = [...new Set(products.map(product => product.category))]; 
+  const categories = [...new Set(products.map(product => product.category))];
 
   const categoryLists = document.querySelectorAll(".categories");
 
@@ -13,13 +13,13 @@ async function listCategories() {
     return;
   }
 
-  
+
   categoryLists.forEach(categoryList => {
-    
+
     categoryList.innerHTML = `<p class="loading-text">Yükleniyor...</p>`;
 
-    setTimeout(() => { 
-      categoryList.innerHTML = ""; 
+    setTimeout(() => {
+      categoryList.innerHTML = "";
       categories.forEach(category => {
         const categoryProduct = products.find(product => product.category === category);
 
@@ -29,23 +29,23 @@ async function listCategories() {
 
         const categoryName = category.charAt(0).toUpperCase() + category.slice(1);
 
-        categoryList.innerHTML += 
+        categoryList.innerHTML +=
           `<div class="category-item">
             <img src="./assets/shared/mobile/image-category-thumbnail-${category}-menu.png" alt="${categoryName} Img">
             <h3>${categoryName}</h3>
-            <a href="#${category.toLowerCase()}" class="shop">Shop</a>
+              <a href="#${category.toLowerCase()}" class="shop-link">Shop</a>
           </div>`;
       });
 
       console.log("✅ Kategoriler başarıyla eklendi.");
-    }, 1000); 
+    }, 1000);
   });
 
   document.addEventListener("click", (e) => {
     if (e.target.matches(".shop")) {
       e.preventDefault();
       const targetHash = e.target.getAttribute("href");
-  
+
       console.log(`🔗 Kategoriye tıklandı: ${targetHash}`);
       window.location.hash = targetHash;
       router();

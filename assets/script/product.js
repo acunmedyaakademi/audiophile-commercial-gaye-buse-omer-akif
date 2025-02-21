@@ -28,22 +28,79 @@ export async function showProductDetails() {
   productContainer.innerHTML = `
     <a class="go-back-link" href="#">Go Back</a>
     <div class="product-detail-item">
-      <img class="product-img" src="${product.image.desktop}" alt="${product.name}">
+      <img class="product-img-mobile" src="${product.image.mobile}"  alt="${product.name}">   
+      <img class="product-img-tablet" src="${product.image.tablet}" alt="${product.name}">
+      <img class="product-img-desktop"  src="${product.image.desktop}"  alt="${product.name}">
+      
       <div class="product-detail-text">
         <h4>${product.isNew ? "NEW PRODUCT" : ""}</h4>
         <h3 class="product-detail-name" data-id="${product.id}">${product.name}</h3>
         <p class="product-detail-info">${product.description}</p>
         <h3 class="product-detail-price">$ ${product.price}</h3>
+        
         <div class="product-count-area">
           <div class="product-counter">
             <button class="minus-counter">-</button>
             <p class="count">${productQuantity}</p>
             <button class="plus-counter">+</button>
           </div>
+
           <button class="add-to-cart" data-isim="${product.name}" data-price="${product.price}" data-slug="${product.slug}">ADD TO CART</button>
         </div>
+
       </div>
+
     </div>
+
+    <div class="product-features">
+      <div class = "features-in-the-box-group">
+        <div class="features-area">
+          <h2 class="features-header">Features</h2>
+          <p class="features-text">${product.features}</p>
+        </div>
+
+          <div class="in-the-box-content">
+          <h2 class="in-the-box-header">IN THE BOX</h2>
+          <div class="content-section">
+            <ul>
+              ${product.includes.map(include => `
+                <li class = "in-the-box-item"><span class = "in-the-box-item-quantity">${include.quantity ? include.quantity + 'x ' : ''}</span> 
+                <span class="in-the-box-item-text">${include.item}</span> </li>
+              `).join('')}
+            </ul>
+          </div>
+        </div>
+      </div>
+
+          <div class="gallery-items">
+            ${product.gallery.map((image, index) => `
+            <div class="gallery-item item-${index + 1}">
+              <img src="${image.mobile}" alt="Image ${index + 1}">
+            </div>
+        `).join('')}
+          </div>
+
+
+      
+      </div>
+      <div class="also-like-section-items">
+        <h2 class = "also-like-header">YOU MAY ALSO LIKE</h2>
+          
+        <div class = "also-like-items-container">
+        ${product.others.map((other, index) => `
+          <div class="also-like-item">
+            <img class= "mobile-only" src="${other.image.mobile}" alt="Image ${index + 1}">
+            <img class= "tablet-only" src="${other.image.tablet}" alt="Image ${index + 1}">
+            <img class= "desktop-only" src="${other.image.desktop}" alt="Image ${index + 1}">
+            <h3 class = "also-like-item-name">${other.name}</h3>
+            <a href ="#product-${other.slug}" class = "see-product-button" >See Product</a>
+          </div>
+        `).join('')}
+        </div>
+      </div>
+
+  
+
   `;
 
   document.querySelector(".plus-counter").addEventListener("click", increaseDetailQuantity);
