@@ -19,17 +19,17 @@ export default async function router() {
   }
 
   let hash = window.location.hash;
-  
+
   if (!hash || (!routes[hash] && !hash.startsWith("#product-"))) {
     if (hash !== "#home") {
       console.warn("⚠️ Geçersiz veya boş hash, #home'a yönlendiriliyor...");
-      window.location.hash = "#home"; 
+      window.location.hash = "#home";
       return;
     }
   }
 
 
-  console.log("🌍 Güncellenen hash:", hash);
+  window.scrollTo(0, 0);
 
   if (hash.startsWith("#product-")) {
     console.log("🛍 Ürün detay sayfası açılıyor...");

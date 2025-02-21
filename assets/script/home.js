@@ -31,9 +31,12 @@ async function listCategories() {
 
         categoryList.innerHTML +=
           `<div class="category-item">
-            <img src="./assets/shared/mobile/image-category-thumbnail-${category}-menu.png" alt="${categoryName} Img">
+            <img src="./assets/shared/mobile/image-category-thumbnail-${category}-menu.png" alt="${categoryName} Img"  class="category-item-image">
             <h3>${categoryName}</h3>
-              <a href="#${category.toLowerCase()}" class="shop-link">Shop</a>
+              <a href="#${category.toLowerCase()}" class="shop-link">Shop
+                <img src="/assets/shared/desktop/right-arrow-icon.svg" alt="">
+              </a>
+              
           </div>`;
       });
 

@@ -196,7 +196,7 @@ function renderOrders() {
 
   document.getElementById("remove-all").addEventListener("click", () => {
     orders = [];
-    renderOrders(); 
+    renderOrders();
 
   });
 
